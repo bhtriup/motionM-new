@@ -1,4 +1,13 @@
-import { Controller } from '@nestjs/common';
+import {Controller, Get, Render} from '@nestjs/common';
+import {OrganizationService} from "./organization.service";
 
-@Controller('organization')
-export class OrganizationController {}
+@Controller('org')
+export class OrganizationController {
+  constructor(private orgService: OrganizationService) {}
+
+  @Get()
+  @Render('pages/member/member')
+  index() {
+
+  }
+}
