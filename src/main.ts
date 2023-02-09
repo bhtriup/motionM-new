@@ -14,8 +14,8 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
 
-  app.use(expressLayouts);
-  app.set('layout', 'layouts/layout');
+  // app.use(expressLayouts);
+  // app.set('layout', 'layouts/layout');
 
   const serverConfig = config.get('server');
   const port = serverConfig.port;
