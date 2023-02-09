@@ -1,0 +1,5 @@
+jwt:
+  secret: '@!!@#motionm$%^~!'
+
+server:
+  port: 3003
