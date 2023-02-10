@@ -1,0 +1,8 @@
+db:
+  type: 'mysql'
+  host: '61.97.186.76'
+  username: 'motionM'
+  password: 'tS2jmpsimsij'
+  port: 3306
+  database: 'MotionM_DB'
+  charset: "utf8mb4"

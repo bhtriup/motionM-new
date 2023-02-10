@@ -5,6 +5,7 @@ import {typeOrmConfig} from "./configs/typeorm.config";
 import { UsersModule } from './users/users.module';
 import { OrganizationModule } from './organization/organization.module';
 import { FriendsModule } from './friends/friends.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { FriendsModule } from './friends/friends.module';
     UsersModule,
     OrganizationModule,
     FriendsModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
