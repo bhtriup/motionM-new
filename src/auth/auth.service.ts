@@ -19,7 +19,6 @@ export class AuthService {
   async create(dto: CreateUserDto): Promise<void> {
     const { id, name, password } = dto;
 
-    // console.log(dto);
     const qb = await this.userRepository
       .createQueryBuilder('user')
       .where('user.USER_ID = :id', { id });
