@@ -1,30 +1,20 @@
 @charset "UTF-8";
 
-/*메인*/
 .global-wrap .main{
     display: flex;
     flex-wrap: wrap;
 }
 
 .global-menu{
+    flex: 70px 0 0;
     height: 100vh;
     background-image: linear-gradient(to top,#F9611E,#F3880E);
-    position: fixed;
-    width: 70px;
-}
-
-.global-menu .nav-wrap{
-    padding-top:30px;
 }
 
 .global-menu .nav-wrap .nav-body li{
-    margin: 0 auto 10px;
+    margin: 0 auto;
     width: 40px;
     height: 40px;
-    opacity: .3;
-}
-.global-menu .nav-wrap .nav-body li.active{
-    opacity: 1;
 }
 
 .global-menu .nav-wrap .nav-body li a{
@@ -41,9 +31,10 @@
     transform: translate(-50%,-50%);
 }
 
+
+
 .content{
     flex: 1 1 auto;
-    padding-left: 70px;
 }
 
 .ct_head{
@@ -55,40 +46,17 @@
     padding:10px 20px;
 }
 
-.content .name-search{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #F2F2F2;
-    width: 100%;
-    border-radius: 50em;
-}
-
 .content .name-search input{
-    width:64%;
-    background-color: #F2F2F2;
-    border-radius: 50em;
     padding: 10px 0;
     border: none;
-
+    background-color:#F2F2F2;
+    width:100%;
+    border-radius: 50em;
 }
 .content .name-search input[placeholder]{
     text-indent: 14px;
+    font-size:14px;
     color:#ABABAB;
-}
-
-.content .name-search input{
-
-}
-
-.content .name-search p {
-    width:60px;
-    height:14px;
-    font-size: 14px;
-    background-image: url("/media/i-search.png");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .member_tr{
@@ -97,25 +65,8 @@
 }
 
 .content .togg-tit{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding-bottom: 1em;
-
 }
-.content .togg-tit .icon{
-    width:9px;
-    height:5px;
-    background-image: url("/media/i-toggle-up.png");
-}
-.content .togg-tit .icon.up{
-    background-image: url("/media/i-toggle-up.png");
-}
-
-.content .togg-tit .icon.down{
-    background-image: url("/media/i-toggle-down.png");
-}
-
 
 .content .togg-tit h3{
     color:#FA781C;
@@ -124,44 +75,6 @@
 
 .content .member_tr{
     padding:10px 0;
-}
-
-.content .member_tr .profile-img{
-    position: relative;
-}
-
-.content .member_tr .profile-img figure{
-    width: 60px;
-    height: 60px;
-    position:relative;
-}
-.content .member_tr.list__ .profile-img figure{
-    width:44px;
-    height:44px;
-}
-
-.content .member_tr .profile-img figure img{
-    width:100%;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-
-.content .member_tr .profile-img .online-state{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: block;
-    width:15px;
-    height:15px;
-    background-color:#69DE78;
-    border-radius: 50em;
-}
-
-.content .member_tr.list__ .profile-img .online-state{
-    width:10px;
-    height:10px;
 }
 
 .content .member_tr .profile-info{
@@ -176,12 +89,6 @@
 
 .content .member_tr .profile-info>span{
     color:#AAAAAA;
-}
-
-.bottom_btn{
-    position:fixed;
-    bottom: 1em;
-    right: 1em;
 }
 
 /* 조직도 css */
@@ -202,6 +109,8 @@
     min-width: 1100px;
     width: 100%;
     min-height: 640px;
+    padding: 1.5rem;
+    border: 1px solid;
 }
 .member-cont {
     display: flex;
@@ -271,6 +180,7 @@
     width: 100%;
     height: 40px;
     margin-bottom: 20px;
+    /*margin: 0 auto;*/
 }
 .member-cont .flex-cont .search-mode input {
     width: 100%;
