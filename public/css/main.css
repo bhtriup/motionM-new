@@ -55,6 +55,14 @@
     padding:30px 20px;
 }
 
+.ct_body{
+    padding:10px 20px;
+}
+
+.ct_bottom{
+    padding:10px 20px;
+}
+
 .ct_wrap{
     border-top: 1px solid #eee;
     padding:10px 20px;
@@ -293,81 +301,24 @@
 }
 
 /* 조직도 css */
-.arrow1 {
-    transform: rotate(0deg);
-}
-.arrow2 {
-    transform: rotate(90deg);
-}
-.active-color {
-    color: #FA781C !important;
-}
 .member {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 1100px;
-    width: 100%;
     min-height: 640px;
+    padding: 1.5rem;
+    border: 1px solid;
 }
 .member-cont {
     display: flex;
     justify-content: center;
 }
 .member-cont .flex-cont:first-child {
-    padding: 1.5rem 0 0 1.5rem;
-    position: relative;
     flex: 0 0 20%;
 }
-.member-cont .flex-cont:first-child:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-    width: 1px;
-    height: 100vh;
-    background-color: #DDDDDD;
-}
-.member-cont .flex-cont h2 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #AAAAAA;
-}
-.member-cont .flex-cont .select-team .select-team-wrap .team-select {
-    display: table;
-}
-.member-cont .flex-cont .select-team .select-team-wrap .team-select .__list {
-    display: none;
-}
-.member-cont .flex-cont .select-team .select-team-wrap .team-select .__select {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #666666;
-}
-.member-cont .flex-cont .select-team .select-team-wrap .team-select .__select figure:last-child {
-    margin: 0 4px;
-}
-.member-cont .flex-cont .select-team .select-team-wrap .team-select .__select img {
-    display: block;
-    max-width: 100%;
-}
-.member-cont .flex-cont .select-team .select-team-wrap02 .__select {
-    margin-left: 15px;
-}
-.member-cont .flex-cont .select-team .select-team-wrap03 .__select {
-    margin-left: 30px;
-}
-.member-cont .flex-cont .select-team .select-team-wrap04 .__select {
-    margin-left: 45px;
-}
 .member-cont .flex-cont:last-child {
-    padding: 1.5rem;
     flex: 0 0 80%;
 }
 .member-cont .flex-cont .border-wrap {
@@ -379,6 +330,7 @@
     width: 100%;
     height: 40px;
     margin-bottom: 20px;
+    /*margin: 0 auto;*/
 }
 .member-cont .flex-cont .search-mode input {
     width: 100%;
@@ -410,173 +362,49 @@
 .member-cont .flex-cont .search-mode .search {
     color: #808080;
 }
+.member-cont .flex-cont .member-num {
+
+}
 .member-cont .flex-cont .member-num .member-wrap {
     display: flex;
-    align-items: center;
 }
 .member-cont .flex-cont .member-num .member-wrap .select-group {
     display: flex;
-    padding-left: 15px;
 }
-.check-member {
-    display: none;
+/* input 숨겨준다 */
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member{
+    /*display:none;*/
 }
-.check-member + .checkbox-label {
-    display: inline-block;
-    margin-right: 10px;
-    cursor: pointer;
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCCC;
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member + label{
+    cursor:pointer;
 }
-.check-member:checked + .checkbox-label {
-    background-image: url("../media/checked-icon.png");
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: center center;
-    border: 0;
-    cursor: pointer;
+/* label:before에 체크하기 전 상태 CSS */
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member + label:before{
+    content:"";
+    display:inline-block;
+    width:17px;
+    height:17px;
+    border:2px solid #F47C7C;
+    border-radius: 4px;
+    vertical-align:middle;
+}
+/* label:before에 체크 된 상태 CSS */
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member:checked + label:before{
+    content:"";
+    background-color:#F47C7C;
+    border-color:#F47C7C;
 }
 .member-cont .flex-cont .member-num .member-wrap .select-group .select-member {
     font-size: 18px;
     font-weight: 700;
     color: #FA781C;
 }
-.member-cont .flex-cont .member-num .member-wrap .select-num {
-    flex: 0 0 71%;
-    display: flex;
-    align-items: center;
-}
+.member-cont .flex-cont .member-num .member-wrap .select-num {}
 .member-cont .flex-cont .member-num .member-wrap .select-num span {
-    display: block;
-    padding-left: 0.5rem;
     font-size: 12px;
     font-weight: 600;
     color: #ABABAB;
 }
 .member-cont .flex-cont .member-num .member-wrap .select-num span b {
     color: #FA781C;
-}
-.member-cont .flex-cont .member-num .member-wrap .low-select-group {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-}
-.check-member-low {
-    display: none;
-}
-.check-member-low + .checkbox-label-low {
-    display: inline-block;
-    margin-right: 10px;
-    cursor: pointer;
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCCC;
-}
-.check-member-low:checked + .checkbox-label-low {
-    background-image: url("../media/checked-icon.png");
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: center center;
-    border: 0;
-    cursor: pointer;
-}
-.member-cont .flex-cont .member-num .member-wrap .low-select-group span {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: #ABABAB;
-}
-.member-info .member-info-wrap .member-tr {
-    display: flex;
-    align-items: center;
-    padding: 15px 0 15px 15px;
-    border-bottom: 1px solid #EEEEEE;
-}
-.member-info .member-info-wrap .member-tr li:first-child {
-    padding-left: 5.3rem;
-}
-.member-info .member-info-wrap .member-tr li:nth-child(2) {
-    padding-left: 14.7rem;
-}
-.member-info .member-info-wrap .member-tr li:nth-child(3) {
-    padding-left: 5.3rem;
-}
-.member-info .member-info-wrap .member-tr li:last-child {
-    padding-left: 9.9rem;
-}
-.member-info .member-info-wrap .member-tr li {
-    font-size: 12px;
-    font-weight: 600;
-    color: #666666;
-}
-.member-info .member-info-wrap .member-scroll {
-    overflow-y: scroll;
-    max-height: 70vh;
-}
-.member-info .member-info-wrap .member-scroll::-webkit-scrollbar {
-    width: 3px;
-}
-.member-info .member-info-wrap .member-scroll::-webkit-scrollbar-thumb {
-    background-color: #DBDBE0;
-}
-.member-info .member-info-wrap .member-scroll::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-.member-info .member-info-wrap .member-scroll .__list-member {
-    display: flex;
-    align-items: center;
-    padding: 10px 0 10px 15px;
-    border-bottom: 1px solid #EEEEEE;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info {
-    display: flex;
-    align-items: center;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info figure {
-    position: relative;
-    width: 44px;
-    height: 44px;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info figure img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info span {
-    display: block;
-    margin: 0 10px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #333333;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info p:nth-child(3) {
-    margin-right: 120px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #AAAAAA;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info p:nth-child(4) {
-    margin-right: 40px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #999999;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info p:nth-child(5) {
-    margin-right: 40px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #999999;
-}
-.member-info .member-info-wrap .member-scroll .__list-member .__list-member-info p:last-child {
-    font-size: 12px;
-    font-weight: 400;
-    color: #999999;
 }
