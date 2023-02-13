@@ -1,1 +1,410 @@
-@charset "UTF-8";/* ******** 목차 ******** *//*메인*//*로그인*//* 조직도 css *//*메인*/.global-wrap .main{    display: flex;    flex-wrap: wrap;}.global-menu{    height: 100vh;    background-image: linear-gradient(to top,#F9611E,#F3880E);    position: fixed;    width: 70px;}.global-menu .nav-wrap{    padding-top:30px;}.global-menu .nav-wrap .nav-body li{    margin: 0 auto 10px;    width: 40px;    height: 40px;    opacity: .3;}.global-menu .nav-wrap .nav-body li.active{    opacity: 1;}.global-menu .nav-wrap .nav-body li a{    width: 100%;    height: 100%;    display: block;    position: relative;}.global-menu .nav-wrap .nav-body li a img{    position: absolute;    top:50%;    left: 50%;    transform: translate(-50%,-50%);}.content{    flex: 1 1 auto;    padding-left: 70px;}.ct_head{    padding:30px 20px;}.ct_body{    padding:10px 20px;}.ct_bottom{    padding:10px 20px;}.ct_wrap{    border-top: 1px solid #eee;    padding:10px 20px;}.content .name-search{    display: flex;    flex-wrap: wrap;    justify-content: space-between;    align-items: center;    background-color: #F2F2F2;    width: 100%;    border-radius: 50em;}.content .name-search input{    width:64%;    background-color: #F2F2F2;    border-radius: 50em;    padding: 10px 0;    border: none;}.content .name-search input[placeholder]{    text-indent: 14px;    color:#ABABAB;}.content .name-search input{}.content .name-search p {    width:60px;    height:14px;    font-size: 14px;    background-image: url("/media/i-search.png");    background-repeat: no-repeat;    background-position: center;}.member_tr{    display: flex;    align-items: center;}.content .togg-tit{    display: flex;    justify-content: space-between;    align-items: center;    padding-bottom: 1em;}.content .togg-tit .icon{    width:9px;    height:5px;    background-image: url("/media/i-toggle-up.png");}.content .togg-tit .icon.up{    background-image: url("/media/i-toggle-up.png");}.content .togg-tit .icon.down{    background-image: url("/media/i-toggle-down.png");}.content .togg-tit h3{    color:#FA781C;    font-size: 15px;}.content .member_tr{    padding:10px 0;}.content .member_tr .profile-img{    position: relative;}.content .member_tr .profile-img figure{    width: 60px;    height: 60px;    position:relative;}.content .member_tr.list__ .profile-img figure{    width:44px;    height:44px;}.content .member_tr .profile-img figure img{    width:100%;    position: absolute;    top:50%;    left: 50%;    transform: translate(-50%,-50%);}.content .member_tr .profile-img .online-state{    position: absolute;    bottom: 0;    right: 0;    display: block;    width:15px;    height:15px;    background-color:#69DE78;    border-radius: 50em;}.content .member_tr.list__ .profile-img .online-state{    width:10px;    height:10px;}.content .member_tr .profile-info{    padding-left: 1em;}.content .member_tr .profile-info>p{    font-size: 15px;    font-weight: 700;    color:#333;}.content .member_tr .profile-info>span{    color:#AAAAAA;}.bottom_btn{    position:fixed;    bottom: 1em;    right: 1em;}/*로그인*/.login-wrapper{    height:100vh;    display: flex;    justify-content: center;    align-items: center;}.login-wrap{    padding:0 30px;    max-width: 400px;    width: 100%;}.login-wrap .logo-wrap{    text-align: center;}.login-wrap .logo-wrap h2{    color:#222;    text-align: center;    padding:20px 0;    font-size:23px;    font-weight: 400;}.login-wrap .login-area .input-area{    display: flex;    flex-direction: column;    justify-content: center;}.login-wrap .login-area .input-area input{    padding:20px 0 10px;    display: block;    border: none;    border-bottom:1px solid #DDDDDD;    margin:1px;    background-repeat: no-repeat;    background-position: left 66%;    text-indent: 30px;}.login-wrap .login-area .input-area input::placeholder{    font-size:13px;    color:#ccc;}.login-wrap .login-area .input-area input:first-child{    background-image: url("/media/i-id.png");}.login-wrap .login-area .input-area input:last-child{    background-image: url("/media/i-password.png");}.login-wrap .checkbox{    padding:20px 0;    display: flex;    flex-wrap: wrap;    align-items: center;}.login-wrap .checkbox input{    display: none;}.login-wrap .checkbox input + label{    display: inline-block;    width:19px;    height:19px;    border-radius:50em;    border:1px solid #ddd;}.login-wrap .checkbox input:checked + label{    background-image: url("/media/i-check.png");    background-repeat: no-repeat;    background-position: center center;    background-color:#FA781C;    border:none;}.login-wrap .checkbox input + label + label{    text-indent: 5px;    color:#222;    font-size:13px;}.login-wrap .login-btn{}.login-wrap .login-btn button{    padding:10px 0;    width:100%;    text-align: center;    background-image: linear-gradient(to left ,#F9611E, #F3880E);    color:#fff;    font-size:15px;    border-radius: 10px;}/* 조직도 css */.member {    position: absolute;    top: 50%;    left: 50%;    transform: translate(-50%, -50%);    min-width: 1100px;    min-height: 640px;    padding: 1.5rem;    border: 1px solid;}.member-cont {    display: flex;    justify-content: center;}.member-cont .flex-cont:first-child {    flex: 0 0 20%;}.member-cont .flex-cont:last-child {    flex: 0 0 80%;}.member-cont .flex-cont .border-wrap {    padding-bottom: 20px;    border-bottom: 1px solid #AAAAAA;}.member-cont .flex-cont .search-mode {    position: relative;    width: 100%;    height: 40px;    margin-bottom: 20px;    /*margin: 0 auto;*/}.member-cont .flex-cont .search-mode input {    width: 100%;    height: 40px;    padding: 0 0 0 1rem;    border: 0;    border-radius: 20px;    background-color: #F2F2F2;    position: relative;}.member-cont .flex-cont .search-mode input::placeholder {    font-size: 14px;    font-weight: 400;    color: #ABABAB;}.member-cont .flex-cont .search-mode .fa-search {    display: block;    width: 14px;    height: 14px;    position: absolute;    top: 50%;    right: 2%;    transform: translate(-50%, -50%);}.member-cont .flex-cont .search-mode .fa-search img {    display: block;    max-width: 100%;}.member-cont .flex-cont .search-mode .search {    color: #808080;}.member-cont .flex-cont .member-num {}.member-cont .flex-cont .member-num .member-wrap {    display: flex;}.member-cont .flex-cont .member-num .member-wrap .select-group {    display: flex;}/* input 숨겨준다 */.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member{    /*display:none;*/}.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member + label{    cursor:pointer;}/* label:before에 체크하기 전 상태 CSS */.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member + label:before{    content:"";    display:inline-block;    width:17px;    height:17px;    border:2px solid #F47C7C;    border-radius: 4px;    vertical-align:middle;}/* label:before에 체크 된 상태 CSS */.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member:checked + label:before{    content:"";    background-color:#F47C7C;    border-color:#F47C7C;}.member-cont .flex-cont .member-num .member-wrap .select-group .select-member {    font-size: 18px;    font-weight: 700;    color: #FA781C;}.member-cont .flex-cont .member-num .member-wrap .select-num {}.member-cont .flex-cont .member-num .member-wrap .select-num span {    font-size: 12px;    font-weight: 600;    color: #ABABAB;}.member-cont .flex-cont .member-num .member-wrap .select-num span b {    color: #FA781C;}
+@charset "UTF-8";
+/* ******** 목차 ******** */
+/*메인*/
+/*로그인*/
+/* 조직도 css */
+
+
+/*메인*/
+.global-wrap .main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.global-menu{
+    height: 100vh;
+    background-image: linear-gradient(to top,#F9611E,#F3880E);
+    position: fixed;
+    width: 70px;
+}
+
+.global-menu .nav-wrap{
+    padding-top:30px;
+}
+
+.global-menu .nav-wrap .nav-body li{
+    margin: 0 auto 10px;
+    width: 40px;
+    height: 40px;
+    opacity: .3;
+}
+.global-menu .nav-wrap .nav-body li.active{
+    opacity: 1;
+}
+
+.global-menu .nav-wrap .nav-body li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.global-menu .nav-wrap .nav-body li a img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.content{
+    flex: 1 1 auto;
+    padding-left: 70px;
+}
+
+.ct_head{
+    padding:30px 20px;
+}
+
+.ct_body{
+    padding:10px 20px;
+}
+
+.ct_bottom{
+    padding:10px 20px;
+}
+
+.ct_wrap{
+    border-top: 1px solid #eee;
+    padding:10px 20px;
+}
+
+.content .name-search{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F2F2;
+    width: 100%;
+    border-radius: 50em;
+}
+
+.content .name-search input{
+    width:64%;
+    background-color: #F2F2F2;
+    border-radius: 50em;
+    padding: 10px 0;
+    border: none;
+
+}
+.content .name-search input[placeholder]{
+    text-indent: 14px;
+    color:#ABABAB;
+}
+
+.content .name-search input{
+
+}
+
+.content .name-search p {
+    width:60px;
+    height:14px;
+    font-size: 14px;
+    background-image: url("/media/i-search.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.member_tr{
+    display: flex;
+    align-items: center;
+}
+
+.content .togg-tit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1em;
+
+}
+.content .togg-tit .icon{
+    width:9px;
+    height:5px;
+    background-image: url("/media/i-toggle-up.png");
+}
+.content .togg-tit .icon.up{
+    background-image: url("/media/i-toggle-up.png");
+}
+
+.content .togg-tit .icon.down{
+    background-image: url("/media/i-toggle-down.png");
+}
+
+
+.content .togg-tit h3{
+    color:#FA781C;
+    font-size: 15px;
+}
+
+.content .member_tr{
+    padding:10px 0;
+}
+
+.content .member_tr .profile-img{
+    position: relative;
+}
+
+.content .member_tr .profile-img figure{
+    width: 60px;
+    height: 60px;
+    position:relative;
+}
+.content .member_tr.list__ .profile-img figure{
+    width:44px;
+    height:44px;
+}
+
+.content .member_tr .profile-img figure img{
+    width:100%;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.content .member_tr .profile-img .online-state{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width:15px;
+    height:15px;
+    background-color:#69DE78;
+    border-radius: 50em;
+}
+
+.content .member_tr.list__ .profile-img .online-state{
+    width:10px;
+    height:10px;
+}
+
+.content .member_tr .profile-info{
+    padding-left: 1em;
+}
+
+.content .member_tr .profile-info>p{
+    font-size: 15px;
+    font-weight: 700;
+    color:#333;
+}
+
+.content .member_tr .profile-info>span{
+    color:#AAAAAA;
+}
+
+.bottom_btn{
+    position:fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+/*로그인*/
+
+.login-wrapper{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-wrap{
+    padding:0 30px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-wrap .logo-wrap{
+    text-align: center;
+}
+
+.login-wrap .logo-wrap h2{
+    color:#222;
+    text-align: center;
+    padding:20px 0;
+    font-size:23px;
+    font-weight: 400;
+}
+
+.login-wrap .login-area .input-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-wrap .login-area .input-area input{
+    padding:20px 0 10px;
+    display: block;
+    border: none;
+    border-bottom:1px solid #DDDDDD;
+    margin:1px;
+    background-repeat: no-repeat;
+    background-position: left 66%;
+    text-indent: 30px;
+}
+
+.login-wrap .login-area .input-area input::placeholder{
+    font-size:13px;
+    color:#ccc;
+}
+
+.login-wrap .login-area .input-area input:first-child{
+    background-image: url("/media/i-id.png");
+}
+.login-wrap .login-area .input-area input:last-child{
+    background-image: url("/media/i-password.png");
+}
+
+.login-wrap .checkbox{
+    padding:20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.login-wrap .checkbox input{
+    display: none;
+}
+
+.login-wrap .checkbox input + label{
+    display: inline-block;
+    width:19px;
+    height:19px;
+    border-radius:50em;
+    border:1px solid #ddd;
+}
+
+.login-wrap .checkbox input:checked + label{
+    background-image: url("/media/i-check.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color:#FA781C;
+    border:none;
+}
+
+.login-wrap .checkbox input + label + label{
+    text-indent: 5px;
+    color:#222;
+    font-size:13px;
+}
+
+.login-wrap .login-btn{
+
+}
+
+.login-wrap .login-btn button{
+    padding:10px 0;
+    width:100%;
+    text-align: center;
+    background-image: linear-gradient(to left ,#F9611E, #F3880E);
+    color:#fff;
+    font-size:15px;
+    border-radius: 10px;
+}
+
+/* 조직도 css */
+.member {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 1100px;
+    min-height: 640px;
+    padding: 1.5rem;
+    border: 1px solid;
+}
+.member-cont {
+    display: flex;
+    justify-content: center;
+}
+.member-cont .flex-cont:first-child {
+    flex: 0 0 20%;
+}
+.member-cont .flex-cont:last-child {
+    flex: 0 0 80%;
+}
+.member-cont .flex-cont .border-wrap {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #AAAAAA;
+}
+.member-cont .flex-cont .search-mode {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    /*margin: 0 auto;*/
+}
+.member-cont .flex-cont .search-mode input {
+    width: 100%;
+    height: 40px;
+    padding: 0 0 0 1rem;
+    border: 0;
+    border-radius: 20px;
+    background-color: #F2F2F2;
+    position: relative;
+}
+.member-cont .flex-cont .search-mode input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    color: #ABABAB;
+}
+.member-cont .flex-cont .search-mode .fa-search {
+    display: block;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translate(-50%, -50%);
+}
+.member-cont .flex-cont .search-mode .fa-search img {
+    display: block;
+    max-width: 100%;
+}
+.member-cont .flex-cont .search-mode .search {
+    color: #808080;
+}
+.member-cont .flex-cont .member-num {
+
+}
+.member-cont .flex-cont .member-num .member-wrap {
+    display: flex;
+}
+.member-cont .flex-cont .member-num .member-wrap .select-group {
+    display: flex;
+}
+/* input 숨겨준다 */
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member{
+    /*display:none;*/
+}
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member + label{
+    cursor:pointer;
+}
+/* label:before에 체크하기 전 상태 CSS */
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member + label:before{
+    content:"";
+    display:inline-block;
+    width:17px;
+    height:17px;
+    border:2px solid #F47C7C;
+    border-radius: 4px;
+    vertical-align:middle;
+}
+/* label:before에 체크 된 상태 CSS */
+.member-cont .flex-cont .member-num .member-wrap .select-group input#check-member:checked + label:before{
+    content:"";
+    background-color:#F47C7C;
+    border-color:#F47C7C;
+}
+.member-cont .flex-cont .member-num .member-wrap .select-group .select-member {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FA781C;
+}
+.member-cont .flex-cont .member-num .member-wrap .select-num {}
+.member-cont .flex-cont .member-num .member-wrap .select-num span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ABABAB;
+}
+.member-cont .flex-cont .member-num .member-wrap .select-num span b {
+    color: #FA781C;
+}
