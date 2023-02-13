@@ -3,9 +3,9 @@ import { AuthController } from './auth.controller';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from '../users/entity/user.entity';
+import { UserEntity } from '../user/entity/user.entity';
 import * as config from 'config';
-import { JwtStrategy } from '../users/jwt.strategy';
+import { JwtStrategy } from '../user/jwt.strategy';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
 
@@ -13,7 +13,7 @@ const jwtConfig = config.get('jwt');
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([UserEntity]),
     JwtModule.register({
       secret: jwtConfig.secret,
     }),

@@ -2,15 +2,17 @@ import {
   BeforeInsert,
   Column,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { InternalServerErrorException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { CodeDetailEntity } from '../../code/code.entity';
 
 @Entity('USER_INFO')
-// @Entity('user')
-export class User {
+export class UserEntity {
   @PrimaryColumn({ name: 'IDX' })
   idx: number;
 
@@ -22,6 +24,18 @@ export class User {
 
   @Column({ name: 'USER_PW' })
   userPw: string;
+
+  @ManyToOne(() => CodeDetailEntity)
+  @JoinColumn({ name: 'USER_TEAM' })
+  team: CodeDetailEntity;
+
+  @ManyToOne(() => CodeDetailEntity)
+  @JoinColumn({ name: 'USER_PART' })
+  part: CodeDetailEntity;
+
+  @ManyToOne(() => CodeDetailEntity)
+  @JoinColumn({ name: 'USER_POSITION' })
+  position: CodeDetailEntity;
 
   @BeforeInsert()
   async hashPassword() {
