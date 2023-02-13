@@ -7,6 +7,7 @@ import { OrganizationModule } from './organization/organization.module';
 import { FriendModule } from './friend/friend.module';
 import { AuthModule } from './auth/auth.module';
 import { CodeModule } from './code/code.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CodeModule } from './code/code.module';
     FriendModule,
     AuthModule,
     CodeModule,
+    ChatModule,
   ],
   controllers: [],
   providers: [],
