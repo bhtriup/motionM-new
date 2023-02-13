@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './entity/user.entity';
 import { Repository } from 'typeorm';
@@ -10,7 +10,7 @@ export class UserService {
     private userRepository: Repository<UserEntity>,
   ) {}
 
-  async getUser(userId: string): Promise<UserEntity> {
+  async getUser(idx: number, userId: string): Promise<UserEntity> {
     const user = await this.userRepository.findOne({
       select: {
         idx: true,
@@ -19,6 +19,7 @@ export class UserService {
       },
       relations: ['team', 'part', 'position'],
       where: {
+        idx,
         userId,
       },
     });
