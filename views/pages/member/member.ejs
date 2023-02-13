@@ -7,7 +7,7 @@
                 <div class="select-team">
                     <ul class="select-team-wrap">
                         <li class="team-select">
-                            <a href="#none" class="__select __select01">
+                            <a href="#none" class="__select __select01 active-color">
                                 <figure class="arrow1">
                                     <img src="/media/group-arrow02.png" alt="">
                                 </figure>
@@ -386,6 +386,7 @@
 <script>
     // 조직도 리스트 토글
     $('.select-team .__select01').click(function () {
+        // $(this).toggleClass("active-color");
         $('.select-team .__list01').slideToggle("100");
         $('.select-team-wrap .__select01 > .arrow1').toggleClass("arrow2");
     });
@@ -413,6 +414,26 @@
         $('.select-team .__list07').slideToggle("100");
         $('.select-team-wrap .__select07 > .arrow1').toggleClass("arrow2");
     });
+
+    var div2 = document.getElementsByClassName("__select");
+
+    function handleClick(event) {
+        if (event.target.classList[1] === "active-color") {
+            event.target.classList.remove("active-color");
+        } else {
+            for (var i = 0; i < div2.length; i++) {
+                div2[i].classList.remove("active-color");
+            }
+
+            event.target.classList.add("active-color");
+        }
+    }
+    function init() {
+        for (var i = 0; i < div2.length; i++) {
+            div2[i].addEventListener("click", handleClick);
+        }
+    }
+    init();
 
     // 전체 체크 해제
     $("#all-mem-chk").click(function() {
