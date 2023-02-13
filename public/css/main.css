@@ -110,7 +110,6 @@
     width: 100%;
     min-height: 640px;
     padding: 1.5rem;
-    border: 1px solid;
 }
 .member-cont {
     display: flex;
@@ -129,7 +128,6 @@
     display: block;
     width: 1px;
     height: 100vh;
-    background-color: #DDDDDD;
 }
 .member-cont .flex-cont h2 {
     margin-bottom: 15px;
