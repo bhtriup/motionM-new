@@ -1,18 +1,18 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../users/entity/user.entity';
+import { UserEntity } from '../user/entity/user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from '../users/dto/create-user.dto';
+import { CreateUserDto } from '../user/dto/create-user.dto';
 import { validate } from 'class-validator';
-import { LoginUserDto } from '../users/dto/login-user.dto';
+import { LoginUserDto } from '../user/dto/login-user.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
+    @InjectRepository(UserEntity)
+    private userRepository: Repository<UserEntity>,
     private jwtService: JwtService,
   ) {}
 
@@ -33,7 +33,7 @@ export class AuthService {
       );
     }
 
-    const newUser = new User();
+    const newUser = new UserEntity();
     newUser.userId = id;
     newUser.userNm = name;
     newUser.userPw = password;
@@ -50,7 +50,7 @@ export class AuthService {
     }
   }
 
-  async findOne(loginUserDto: LoginUserDto): Promise<User> {
+  async findOne(loginUserDto: LoginUserDto): Promise<UserEntity> {
     const { userId, userPw } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: {
@@ -69,7 +69,7 @@ export class AuthService {
     return null;
   }
 
-  public async generateJWT(user: User) {
+  public async generateJWT(user: UserEntity) {
     const today = new Date();
     const exp = new Date(today);
     exp.setDate(today.getDate() + 60);

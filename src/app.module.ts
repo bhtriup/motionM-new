@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {typeOrmConfig} from "./configs/typeorm.config";
-import { UsersModule } from './users/users.module';
+import { typeOrmConfig } from './configs/typeorm.config';
+import { UserModule } from './user/user.module';
 import { OrganizationModule } from './organization/organization.module';
-import { FriendsModule } from './friends/friends.module';
+import { FriendModule } from './friend/friend.module';
 import { AuthModule } from './auth/auth.module';
+import { CodeModule } from './code/code.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -14,10 +16,12 @@ import { AuthModule } from './auth/auth.module';
       envFilePath: [`${__dirname}/config/env/.${process.env.NODE_ENV}.env`],
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
-    UsersModule,
+    UserModule,
     OrganizationModule,
-    FriendsModule,
+    FriendModule,
     AuthModule,
+    CodeModule,
+    ChatModule,
   ],
   controllers: [],
   providers: [],
