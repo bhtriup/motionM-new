@@ -1,20 +1,35 @@
 @charset "UTF-8";
+/* ******** 목차 ******** */
+/*메인*/
+/*로그인*/
+/* 조직도 css */
 
+
+/*메인*/
 .global-wrap .main{
     display: flex;
     flex-wrap: wrap;
 }
 
 .global-menu{
-    flex: 70px 0 0;
     height: 100vh;
     background-image: linear-gradient(to top,#F9611E,#F3880E);
+    position: fixed;
+    width: 70px;
+}
+
+.global-menu .nav-wrap{
+    padding-top:30px;
 }
 
 .global-menu .nav-wrap .nav-body li{
-    margin: 0 auto;
+    margin: 0 auto 10px;
     width: 40px;
     height: 40px;
+    opacity: .3;
+}
+.global-menu .nav-wrap .nav-body li.active{
+    opacity: 1;
 }
 
 .global-menu .nav-wrap .nav-body li a{
@@ -31,10 +46,9 @@
     transform: translate(-50%,-50%);
 }
 
-
-
 .content{
     flex: 1 1 auto;
+    padding-left: 70px;
 }
 
 .ct_head{
@@ -46,17 +60,40 @@
     padding:10px 20px;
 }
 
+.content .name-search{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F2F2;
+    width: 100%;
+    border-radius: 50em;
+}
+
 .content .name-search input{
+    width:64%;
+    background-color: #F2F2F2;
+    border-radius: 50em;
     padding: 10px 0;
     border: none;
-    background-color:#F2F2F2;
-    width:100%;
-    border-radius: 50em;
+
 }
 .content .name-search input[placeholder]{
     text-indent: 14px;
-    font-size:14px;
     color:#ABABAB;
+}
+
+.content .name-search input{
+
+}
+
+.content .name-search p {
+    width:60px;
+    height:14px;
+    font-size: 14px;
+    background-image: url("/media/i-search.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .member_tr{
@@ -65,8 +102,25 @@
 }
 
 .content .togg-tit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-bottom: 1em;
+
 }
+.content .togg-tit .icon{
+    width:9px;
+    height:5px;
+    background-image: url("/media/i-toggle-up.png");
+}
+.content .togg-tit .icon.up{
+    background-image: url("/media/i-toggle-up.png");
+}
+
+.content .togg-tit .icon.down{
+    background-image: url("/media/i-toggle-down.png");
+}
+
 
 .content .togg-tit h3{
     color:#FA781C;
@@ -75,6 +129,44 @@
 
 .content .member_tr{
     padding:10px 0;
+}
+
+.content .member_tr .profile-img{
+    position: relative;
+}
+
+.content .member_tr .profile-img figure{
+    width: 60px;
+    height: 60px;
+    position:relative;
+}
+.content .member_tr.list__ .profile-img figure{
+    width:44px;
+    height:44px;
+}
+
+.content .member_tr .profile-img figure img{
+    width:100%;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.content .member_tr .profile-img .online-state{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width:15px;
+    height:15px;
+    background-color:#69DE78;
+    border-radius: 50em;
+}
+
+.content .member_tr.list__ .profile-img .online-state{
+    width:10px;
+    height:10px;
 }
 
 .content .member_tr .profile-info{
@@ -89,6 +181,115 @@
 
 .content .member_tr .profile-info>span{
     color:#AAAAAA;
+}
+
+.bottom_btn{
+    position:fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+/*로그인*/
+
+.login-wrapper{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-wrap{
+    padding:0 30px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-wrap .logo-wrap{
+    text-align: center;
+}
+
+.login-wrap .logo-wrap h2{
+    color:#222;
+    text-align: center;
+    padding:20px 0;
+    font-size:23px;
+    font-weight: 400;
+}
+
+.login-wrap .login-area .input-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-wrap .login-area .input-area input{
+    padding:20px 0 10px;
+    display: block;
+    border: none;
+    border-bottom:1px solid #DDDDDD;
+    margin:1px;
+    background-repeat: no-repeat;
+    background-position: left 66%;
+    text-indent: 30px;
+}
+
+.login-wrap .login-area .input-area input::placeholder{
+    font-size:13px;
+    color:#ccc;
+}
+
+.login-wrap .login-area .input-area input:first-child{
+    background-image: url("/media/i-id.png");
+}
+.login-wrap .login-area .input-area input:last-child{
+    background-image: url("/media/i-password.png");
+}
+
+.login-wrap .checkbox{
+    padding:20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.login-wrap .checkbox input{
+    display: none;
+}
+
+.login-wrap .checkbox input + label{
+    display: inline-block;
+    width:19px;
+    height:19px;
+    border-radius:50em;
+    border:1px solid #ddd;
+}
+
+.login-wrap .checkbox input:checked + label{
+    background-image: url("/media/i-check.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color:#FA781C;
+    border:none;
+}
+
+.login-wrap .checkbox input + label + label{
+    text-indent: 5px;
+    color:#222;
+    font-size:13px;
+}
+
+.login-wrap .login-btn{
+
+}
+
+.login-wrap .login-btn button{
+    padding:10px 0;
+    width:100%;
+    text-align: center;
+    background-image: linear-gradient(to left ,#F9611E, #F3880E);
+    color:#fff;
+    font-size:15px;
+    border-radius: 10px;
 }
 
 /* 조직도 css */
@@ -318,7 +519,7 @@
     max-height: 70vh;
 }
 .member-info .member-info-wrap .member-scroll::-webkit-scrollbar {
-    width: 3px;
+    width: 4px;
 }
 .member-info .member-info-wrap .member-scroll::-webkit-scrollbar-thumb {
     background-color: #DBDBE0;
