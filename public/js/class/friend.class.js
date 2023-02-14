@@ -34,6 +34,8 @@ class Friend extends MotionM {
     list.forEach((item) => {
       html += _this.mappingUserDetail(item);
     });
+
+    $('#cont-profile-list').html(html);
   }
 
   saveFriendList(list) {
@@ -41,8 +43,10 @@ class Friend extends MotionM {
   }
 
   searchFriend(val) {
-    let list = _.filter(this.friendList, { userNm: val });
-    console.log(list);
+    let list = _.filter(this.friendList, (item) => {
+      return item.userNm.indexOf(val) !== -1;
+    });
+
     this.printFriendListDetail(list);
   }
 }

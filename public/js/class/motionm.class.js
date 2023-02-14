@@ -18,16 +18,19 @@ class MotionM {
     if (info.position?.codeNm) positionArr.push(info.position.codeNm);
 
     let html = `
-        <div class="profile-img">
-            <figure>
-                <img src="/media/pf-dummy01.png" alt=""/>
-            </figure>
-            <span class="online-state" style="${offStatus}"></span>
+        <div class="member_tr">
+          <div class="profile-img">
+              <figure>
+                  <img src="/media/pf-dummy02.png" alt=""/>
+              </figure>
+              <span class="online-state" style="${offStatus}"></span>
+          </div>
+          <div class="profile-info">
+              <p class=pb-2>${info.userNm}</p>
+              <span>${positionArr.join('/')}</span>
+          </div>
         </div>
-        <div class="profile-info">
-            <p class=pb-2>${info.userNm}</p>
-            <span>${positionArr.join('/')}</span>
-        </div>`;
+    `;
     return html;
   }
 }
