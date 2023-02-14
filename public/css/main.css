@@ -886,6 +886,15 @@
     font-weight: 400;
     color: #CCCCCC;
 }
+.chat-main .__chat-wrap textarea::-webkit-scrollbar {
+    display: none;
+}
+.chat-main .__chat-wrap textarea::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+.chat-main .__chat-wrap textarea::-webkit-scrollbar-track {
+    background-color: transparent;
+}
 .chat-main .__chat-wrap .chat-i-wrap ul {
     display: flex;
 }
