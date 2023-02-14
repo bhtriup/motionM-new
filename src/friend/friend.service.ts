@@ -14,21 +14,23 @@ export class FriendService {
    * TODO: 다시해야함 - 나를 뺀 친구 목록
    */
   async getFriendList(userIdx: number): Promise<UserEntity[]> {
-    const list = await this.userRepository.find({
-      select: {
-        idx: true,
-        userId: true,
-        userNm: true,
-      },
-      relations: ['team', 'part', 'position'],
-      where: {
-        idx: Not(Equal(userIdx)),
-      },
-      order: {
-        userNm: 'ASC',
-        idx: 'ASC',
-      },
-    });
+    const list = await this.userRepository
+      .createQueryBuilder('user')
+      .select([
+        'user.idx',
+        'user.userId',
+        'user.userNm',
+        'user.userStatus',
+        't.codeNm',
+        'pa.codeNm',
+        'po.codeNm',
+      ])
+      .leftJoin('user.team', 't')
+      .leftJoin('user.part', 'pa')
+      .leftJoin('user.position', 'po')
+      .where('user.idx <> :idx', { idx: userIdx })
+      .orderBy({ 'user.userNm': 'ASC', 'user.idx': 'ASC' })
+      .getMany();
 
     return list;
   }

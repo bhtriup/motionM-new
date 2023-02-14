@@ -199,7 +199,8 @@
     height: 60px;
     position:relative;
 }
-.content .member_tr.list__ .profile-img figure{
+
+.content .ours-list .member_tr .profile-img figure{
     width:44px;
     height:44px;
 }
@@ -245,7 +246,7 @@
     border-radius: 50em;
 }
 
-.content .member_tr.list__ .profile-img .online-state{
+.content .ours-list .member_tr .profile-img .online-state{
     width:10px;
     height:10px;
 }
@@ -270,8 +271,93 @@
     right: 1em;
 }
 
-/*로그인*/
+/*프로필뷰*/
+.popup-body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.profile-view-wrap{
+    max-width: 400px;
+    width: 100%;
+    padding:0 30px;
+}
+
+.profile-view-wrap .img-info {
+    border-bottom: 1px solid #AAAAAA;
+
+}
+
+.profile-view-wrap .img-info figure{
+    position:relative;
+    width:80px;
+    height:80px;
+    margin: 0 auto;
+    border-radius: 50em;
+    overflow: hidden;
+}
+
+.profile-view-wrap .img-info figure img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.profile-view-wrap .profile-info{
+    text-align: center;
+}
+.profile-view-wrap .profile-info p{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.profile-view-wrap .profile-info span{
+    color:#666666;
+    font-size:12px;
+}
+
+.profile-view-wrap .detail-info{
+    padding:30px 20px 10px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.profile-view-wrap .detail-info ul li{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size:12px;
+}
+
+.profile-view-wrap .detail-info .tit__{
+    width:30%;
+    color:#666;
+}
+
+.profile-view-wrap .detail-info .desc__{
+    width: 70%;
+    color:#999;
+}
+.profile-view-wrap .detail-info .desc__ span {
+    color: #FA781C;
+}
+.profile-view-wrap .chat-btn{
+    text-align: center;
+    width: 100px;
+    margin: 0 auto;
+}
+.profile-view-wrap .chat-btn a{
+    display: block;
+}
+.profile-view-wrap .chat-btn a p{
+    font-size:11px;
+    color:#aaa;
+}
+
+/*로그인*/
 .login-wrapper{
     height:100vh;
     display: flex;
