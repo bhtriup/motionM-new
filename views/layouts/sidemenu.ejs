@@ -1,1 +1,41 @@
-<div class="nav-wrap">    <ul class="nav-body">        <li class="active">            <a href="/friend" title="">                <img src="/media/i_profile.png" alt="">            </a>        </li>        <li>            <a href="/chatlist" title="">                <img src="/media/i_chat_list.png" alt="">            </a>        </li>        <li>            <a href="#" title="">                <img src="/media/i_new_chat.png" alt="">            </a>        </li>        <li>            <a href="#" title="">                <img src="/media/i_edit.png" alt="">            </a>        </li>    </ul></div>
+<div class="nav-wrap">
+    <ul class="nav-body">
+        <li>
+            <a id="friend" href="/friend" title="">
+                <img src="/media/i_profile.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a id="roomList" href="/chat/room-list" title="">
+                <img src="/media/i_chat_list.png" alt="">
+            </a>
+            <span class="num__">23</span>
+        </li>
+        <li>
+            <a href="#" title="">
+                <img src="/media/i_new_chat.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#" title="">
+                <img src="/media/i_edit.png" alt="">
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        const url = location.href;
+        const menu0 = url.indexOf("/friend");
+        const menu1 = url.indexOf("/chat/room-list");
+
+        if(menu0 != -1) {
+            $("#friend").addClass("active");
+        }
+        if(menu1 != -1) {
+            $("#roomList").addClass("active");
+        }
+    });
+</script>
