@@ -8,6 +8,7 @@ import * as config from 'config';
 import { JwtStrategy } from '../user/jwt.strategy';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
+import { UserService } from '../user/user.service';
 
 const jwtConfig = config.get('jwt');
 
@@ -20,7 +21,7 @@ const jwtConfig = config.get('jwt');
     PassportModule,
   ],
   controllers: [AuthController],
-  providers: [JwtStrategy, LocalStrategy, AuthService],
+  providers: [JwtStrategy, LocalStrategy, AuthService, UserService],
   exports: [AuthService],
 })
 export class AuthModule {}
