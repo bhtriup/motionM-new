@@ -199,7 +199,8 @@
     height: 60px;
     position:relative;
 }
-.content .member_tr.list__ .profile-img figure{
+
+.content .ours-list .member_tr .profile-img figure{
     width:44px;
     height:44px;
 }
