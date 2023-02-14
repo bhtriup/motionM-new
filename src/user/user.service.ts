@@ -16,18 +16,23 @@ export class UserService {
    * @param userId
    */
   async getUser(idx: number, userId: string): Promise<UserEntity> {
-    const user = await this.userRepository.findOne({
-      select: {
-        idx: true,
-        userId: true,
-        userNm: true,
-      },
-      relations: ['team', 'part', 'position'],
-      where: {
-        idx,
-        userId,
-      },
-    });
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .select([
+        'user.idx',
+        'user.userId',
+        'user.userNm',
+        'user.userStatus',
+        't.codeNm',
+        'pa.codeNm',
+        'po.codeNm',
+      ])
+      .leftJoin('user.team', 't')
+      .leftJoin('user.part', 'pa')
+      .leftJoin('user.position', 'po')
+      .where('user.idx = :idx', { idx })
+      .where('user.userId = :userId', { userId })
+      .getOne();
 
     return user;
   }

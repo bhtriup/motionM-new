@@ -13,17 +13,7 @@
                         <h3>내 프로필</h3>
                         <p class="icon"></p>
                     </div>
-                    <div class="member_tr">
-                        <div class="profile-img">
-                            <figure>
-                                <img src="/media/pf-dummy01.png" alt=""/>
-                            </figure>
-                            <span class="online-state"></span>
-                        </div>
-                        <div class="profile-info">
-                            <p class=pb-2>박수영</p>
-                            <span>선임/디자인파트</span>
-                        </div>
+                    <div class="member_tr" id="cont-user-info">
                     </div>
                 </div>
             </div>
@@ -35,16 +25,7 @@
                     </div>
                     <ul class="ours-list">
                         <li class="member_tr list__">
-                            <div class="profile-img">
-                                <figure>
-                                    <img src="/media/pf-dummy01.png" alt=""/>
-                                </figure>
-                                <span class="online-state" style="display: none;"></span>
-                            </div>
-                            <div class="profile-info">
-                                <p class=pb-2>김이나</p>
-                                <span>선임/디자인파트</span>
-                            </div>
+
                         </li>
                         <li class="member_tr list__">
                             <div class="profile-img">
@@ -118,6 +99,8 @@
 </div>
 
 <script src="/js/socket/friend.socket.js"></script>
+<script src="/js/class/user.class.js"></script>
+<script src="/js/class/friend.class.js"></script>
 <script src="/js/friend/index.js"></script>
 <script>
     // 친구 리스트 토글
