@@ -13,7 +13,9 @@
                         <h3>내 프로필</h3>
                         <p class="icon"></p>
                     </div>
-                    <div class="member_tr" id="cont-user-info">
+                    <div class="profile-list">
+                        <div class="member_tr " id="cont-user-info">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -23,70 +25,72 @@
                         <h3>디자인 파트</h3>
                         <p class="icon"></p>
                     </div>
-                    <ul class="ours-list">
-                        <li class="member_tr list__">
+                    <div class="ours-list">
+                        <div class="ours-list profile-list">
+                            <div class="member_tr list__">
 
-                        </li>
-                        <li class="member_tr list__">
-                            <div class="profile-img">
-                                <figure>
-                                    <img src="/media/pf-dummy02.png" alt=""/>
-                                </figure>
                             </div>
-                            <div class="profile-info">
-                                <p class=pb-2>박수영</p>
-                                <span>선임/디자인파트</span>
+                            <div class="member_tr list__">
+                                <div class="profile-img">
+                                    <figure>
+                                        <img src="/media/pf-dummy02.png" alt=""/>
+                                    </figure>
+                                </div>
+                                <div class="profile-info">
+                                    <p class=pb-2>박수영</p>
+                                    <span>선임/디자인파트</span>
+                                </div>
                             </div>
-                        </li>
-                        <li class="member_tr list__">
-                            <div class="profile-img">
-                                <figure>
-                                    <img src="/media/pf-dummy02.png" alt=""/>
-                                </figure>
-                                <span class=""></span>
+                            <div class="member_tr list__">
+                                <div class="profile-img">
+                                    <figure>
+                                        <img src="/media/pf-dummy02.png" alt=""/>
+                                    </figure>
+                                    <span class="online-state"></span>
+                                </div>
+                                <div class="profile-info">
+                                    <p class=pb-2>김구구</p>
+                                    <span>선임/디자인파트</span>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <p class=pb-2>김구구</p>
-                                <span>선임/디자인파트</span>
+                            <div class="member_tr list__">
+                                <div class="profile-img">
+                                    <figure>
+                                        <img src="/media/pf-dummy02.png" alt=""/>
+                                    </figure>
+                                    <span class=""></span>
+                                </div>
+                                <div class="profile-info">
+                                    <p class=pb-2>김팔팔</p>
+                                    <span>선임/디자인파트</span>
+                                </div>
                             </div>
-                        </li>
-                        <li class="member_tr list__">
-                            <div class="profile-img">
-                                <figure>
-                                    <img src="/media/pf-dummy02.png" alt=""/>
-                                </figure>
-                                <span class=""></span>
+                            <div class="member_tr list__">
+                                <div class="profile-img">
+                                    <figure>
+                                        <img src="/media/pf-dummy02.png" alt=""/>
+                                    </figure>
+                                    <span class=""></span>
+                                </div>
+                                <div class="profile-info">
+                                    <p class=pb-2>김칠칠</p>
+                                    <span>선임/디자인파트</span>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <p class=pb-2>김팔팔</p>
-                                <span>선임/디자인파트</span>
+                            <div class="member_tr list__">
+                                <div class="profile-img">
+                                    <figure>
+                                        <img src="/media/pf-dummy02.png" alt=""/>
+                                    </figure>
+                                    <span class=""></span>
+                                </div>
+                                <div class="profile-info">
+                                    <p class=pb-2>김육육</p>
+                                    <span>선임/디자인파트</span>
+                                </div>
                             </div>
-                        </li>
-                        <li class="member_tr list__">
-                            <div class="profile-img">
-                                <figure>
-                                    <img src="/media/pf-dummy02.png" alt=""/>
-                                </figure>
-                                <span class=""></span>
-                            </div>
-                            <div class="profile-info">
-                                <p class=pb-2>김칠칠</p>
-                                <span>선임/디자인파트</span>
-                            </div>
-                        </li>
-                        <li class="member_tr list__">
-                            <div class="profile-img">
-                                <figure>
-                                    <img src="/media/pf-dummy02.png" alt=""/>
-                                </figure>
-                                <span class=""></span>
-                            </div>
-                            <div class="profile-info">
-                                <p class=pb-2>김육육</p>
-                                <span>선임/디자인파트</span>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,12 +109,12 @@
 <script>
     // 친구 리스트 토글
     $('.my-profile .togg-tit').click(function () {
-        $('.content .my-profile .member_tr').slideToggle("100");
+        $('.content .my-profile .profile-list').slideToggle("100");
         $(this).find(".icon").toggleClass("up down");
     });
 
     $('.ours-profile .togg-tit').click(function () {
-        $('.content .ours-profile .member_tr').slideToggle("100");
+        $('.content .ours-profile .profile-list').slideToggle("100");
         $(this).find(".icon").toggleClass("up down");
     });
 </script>
