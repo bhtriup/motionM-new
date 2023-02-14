@@ -18,7 +18,7 @@
                     <label for="autoLogin">자동로그인</label>
                 </p>
                 <p class="login-btn">
-                    <button>로그인</button>
+                    <button onclick="login()">로그인</button>
                 </p>
             </div>
         </div>
@@ -51,7 +51,7 @@ function login() {
     },
     error : function(error) {
       // console.log('error');
-      // console.log(error);
+      console.log(error);
       alert('로그인에 실패했습니다.');
     },
   });

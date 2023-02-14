@@ -39,7 +39,7 @@
                                 <figure>
                                     <img src="/media/pf-dummy01.png" alt=""/>
                                 </figure>
-                                <span class="online-state"></span>
+                                <span class="online-state" style="display: none;"></span>
                             </div>
                             <div class="profile-info">
                                 <p class=pb-2>김이나</p>
@@ -51,7 +51,6 @@
                                 <figure>
                                     <img src="/media/pf-dummy02.png" alt=""/>
                                 </figure>
-                                <span class="online-state"></span>
                             </div>
                             <div class="profile-info">
                                 <p class=pb-2>박수영</p>
@@ -121,7 +120,7 @@
 <script src="/js/socket/friend.socket.js"></script>
 <script src="/js/friend/index.js"></script>
 <script>
-    //     친구 리스트 토글
+    // 친구 리스트 토글
     $('.my-profile .togg-tit').click(function () {
         $('.content .my-profile .member_tr').slideToggle("100");
         $(this).find(".icon").toggleClass("up down");

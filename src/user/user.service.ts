@@ -10,6 +10,11 @@ export class UserService {
     private userRepository: Repository<UserEntity>,
   ) {}
 
+  /**
+   * 로그인 회원 정보
+   * @param idx
+   * @param userId
+   */
   async getUser(idx: number, userId: string): Promise<UserEntity> {
     const user = await this.userRepository.findOne({
       select: {
@@ -25,5 +30,13 @@ export class UserService {
     });
 
     return user;
+  }
+
+  /**
+   * 로그인 회원 상태 변경
+   * @param idx
+   */
+  async setUserOnline(idx: number, status: number): Promise<void> {
+    await this.userRepository.update(idx, { userStatus: status });
   }
 }

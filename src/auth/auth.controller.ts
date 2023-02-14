@@ -12,19 +12,33 @@ import { AuthService } from './auth.service';
 import { LoginUserDto } from '../user/dto/login-user.dto';
 import { UserRO } from '../user/user.interface';
 import { AuthGuard } from '@nestjs/passport';
+import { UserService } from '../user/user.service';
+import { User } from '../user/user.decorator';
+import { UserEntity } from '../user/entity/user.entity';
+import { OnlineStatusCode, ResponseCode } from '../common/constant/constant';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly userService: UserService,
+  ) {}
 
-  @Get('login')
+  /**
+   * 로그인 화면
+   */
+  @Get('/login')
   @Render('pages/login')
   logIn() {
     // 로그인화면
   }
 
+  /**
+   * 로그인 처리
+   * @param loginUserDto
+   */
   @UseGuards(AuthGuard('local'))
-  @Post('login')
+  @Post('/login')
   async login(@Body() loginUserDto: LoginUserDto): Promise<UserRO> {
     const _user = await this.authService.findOne(loginUserDto);
 
@@ -33,10 +47,25 @@ export class AuthController {
       throw new HttpException({ errors }, HttpStatus.UNAUTHORIZED);
     }
 
+    // 로그인 상태 변경
+    await this.userService.setUserOnline(_user.idx, OnlineStatusCode.On);
+
+    // 토큰 발급
     const token = await this.authService.generateJWT(_user);
     const { idx, userId, userNm } = _user;
     const user = { idx, userId, userNm, token };
 
     return { user };
+  }
+
+  /**
+   * 로그아웃 처리
+   * @param user
+   */
+  @UseGuards(AuthGuard('jwt'))
+  @Get('/logout')
+  async logout(@User() user: UserEntity): Promise<void> {
+    const userIdx = user.idx;
+    await this.userService.setUserOnline(userIdx, OnlineStatusCode.OFF);
   }
 }
