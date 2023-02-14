@@ -11,3 +11,11 @@ $(() => {
   // 친구 목록
   friendClass.getFriendList();
 });
+
+/**
+ * 친구 검색
+ */
+function searchFriend(el) {
+  let data = $(el).val();
+  friendClass.searchFriend(data);
+}
