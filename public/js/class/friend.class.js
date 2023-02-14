@@ -17,6 +17,7 @@ class Friend extends MotionM {
       },
       success: (data) => {
         let _data = JSON.parse(data);
+        _this.saveFriendList(_data);
         _this.printFriendListDetail(_data);
       },
       error: (error) => {
@@ -33,5 +34,15 @@ class Friend extends MotionM {
     list.forEach((item) => {
       html += _this.mappingUserDetail(item);
     });
+  }
+
+  saveFriendList(list) {
+    this.friendList = list;
+  }
+
+  searchFriend(val) {
+    let list = _.filter(this.friendList, { userNm: val });
+    console.log(list);
+    this.printFriendListDetail(list);
   }
 }
