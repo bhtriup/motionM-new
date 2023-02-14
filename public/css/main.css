@@ -891,9 +891,11 @@
 }
 .chat-main .__chat-wrap textarea::-webkit-scrollbar-thumb {
     background-color: transparent;
+    border: 0;
 }
 .chat-main .__chat-wrap textarea::-webkit-scrollbar-track {
     background-color: transparent;
+    border: 0;
 }
 .chat-main .__chat-wrap .chat-i-wrap ul {
     display: flex;
