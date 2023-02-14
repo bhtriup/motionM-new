@@ -1005,9 +1005,13 @@
 
 /* 채팅방 정보 설정 */
 .chat-room {
-    max-width: 310px;
-    max-height: 527px;
-    border: 1px solid #DDDDDD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.chat-room .chat-room-wrap {
+    flex: 1;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -1015,19 +1019,6 @@
     position: relative;
     text-align: center;
     border-bottom: 1px solid #DDDDDD;
-}
-.chat-room .chat-room-wrap .close-wrap {
-    position: absolute;
-    top: 9px;
-    right: 9px;
-}
-.chat-room .chat-room-wrap .close-wrap a {
-    display: block;
-    width: 100%;
-}
-.chat-room .chat-room-wrap .close-wrap a img {
-    display: block;
-    max-width: 100%;
 }
 .chat-room .chat-room-wrap .ct_head .img-wrap {
     margin-bottom: 10px;
