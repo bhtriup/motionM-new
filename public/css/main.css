@@ -916,3 +916,102 @@
 .chat-main .__chat-wrap .chat-i-wrap ul li a img {
     max-width: 100%;
 }
+
+/* 채팅방 정보 설정 */
+.chat-room {
+    max-width: 310px;
+    max-height: 527px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.chat-room .chat-room-wrap .ct_head {
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid #DDDDDD;
+}
+.chat-room .chat-room-wrap .close-wrap {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+}
+.chat-room .chat-room-wrap .close-wrap a {
+    display: block;
+    width: 100%;
+}
+.chat-room .chat-room-wrap .close-wrap a img {
+    display: block;
+    max-width: 100%;
+}
+.chat-room .chat-room-wrap .ct_head .img-wrap {
+    margin-bottom: 10px;
+}
+.chat-room .chat-room-wrap .ct_head .round-wrap {
+    position: relative;
+    display: inline-block;
+}
+.chat-room .chat-room-wrap .ct_head .round-wrap img:first-child {
+    max-width: 100%;
+}
+.chat-room .chat-room-wrap .ct_head .round-wrap a {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+}
+.chat-room .chat-room-wrap .ct_head .round-wrap a img {
+    max-width: 100%;
+}
+.chat-room .chat-room-wrap .ct_head .info-txt-wrap span {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333333;
+}
+.chat-room .chat-room-wrap .ct_head .info-txt-wrap p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666666;
+}
+.chat-room .chat-room-wrap .ct_body {
+    background-color: #F6F6F6;
+    overflow-y: scroll;
+    max-height: 340px;
+}
+.chat-room .chat-room-wrap .ct_body::-webkit-scrollbar {
+    width: 8px;
+}
+.chat-room .chat-room-wrap .ct_body::-webkit-scrollbar-thumb {
+    background-color: #DBDBE0;
+    border-radius: 5px;
+}
+.chat-room .chat-room-wrap .ct_body::-webkit-scrollbar-track {
+    background-color: #FBFBFB;
+    border-left: 1px solid #DDDDDD;
+}
+.chat-room .chat-room-wrap .person-wrap {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.chat-room .chat-room-wrap .person-wrap .person-img {
+    margin-right: 10px;
+}
+.chat-room .chat-room-wrap .person-wrap .person-img img {
+    display: block;
+    max-width: 44px;
+    max-height: 44px;
+}
+.chat-room .chat-room-wrap .person-wrap span {
+    display: block;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333333;
+}
+.chat-room .chat-room-wrap .person-wrap p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #AAAAAA;
+}
