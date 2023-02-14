@@ -17,6 +17,7 @@ export class FriendController {
   @Get('/list')
   @UseGuards(AuthGuard('jwt'))
   async getFriendList(@User() user: UserEntity): Promise<UserEntity[]> {
-    return await this.friendService.getFriendList();
+    const userIdx = user.idx;
+    return await this.friendService.getFriendList(userIdx);
   }
 }
