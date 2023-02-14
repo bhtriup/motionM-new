@@ -32,4 +32,24 @@ class User extends MotionM {
 
     $('#cont-user-info').html(html);
   }
+
+  logout() {
+    let userInfo = this.getUserInfo();
+
+    $.ajax({
+      url: `/auth/logout`,
+      type: 'GET',
+      dataType: 'html',
+      async: true,
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+      success: (data) => {},
+      error: (error) => {
+        // console.log('error');
+        console.log(error);
+        // alert('로그인에 실패했습니다.');
+      },
+    });
+  }
 }
