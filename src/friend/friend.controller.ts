@@ -20,4 +20,8 @@ export class FriendController {
     const userIdx = user.idx;
     return await this.friendService.getFriendList(userIdx);
   }
+
+  @Get('/profile')
+  @Render('pages/profileview/profileview')
+  viewProfile() {}
 }
