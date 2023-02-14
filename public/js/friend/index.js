@@ -19,3 +19,17 @@ function searchFriend(el) {
   let data = $(el).val();
   friendClass.searchFriend(data);
 }
+
+/**
+ * 로그인 처리
+ */
+function friendLogin() {
+  friendClass.getFriendList();
+}
+
+/**
+ * 로그아웃 처리
+ */
+function logout() {
+  userClass.logout();
+}

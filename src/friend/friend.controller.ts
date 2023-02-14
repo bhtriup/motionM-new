@@ -10,9 +10,7 @@ export class FriendController {
 
   @Get('/')
   @Render('pages/index')
-  index() {
-    console.log('여기다');
-  }
+  index() {}
 
   @Get('/list')
   @UseGuards(AuthGuard('jwt'))

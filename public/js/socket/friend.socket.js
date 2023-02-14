@@ -7,10 +7,12 @@ const socket = io.connect(url, {
 
 socket.on('connect', () => {
   console.log('connected!');
+  reqUpdateFriendList();
 });
 
 socket.on('disconnect', () => {
   console.log('disconnected...');
+  logout();
 });
 
 socket.on('error', (err) => {
@@ -19,4 +21,14 @@ socket.on('error', (err) => {
 
 socket.on('connect_error', (err) => {
   console.log(`connect error du to ${err.message}`);
+});
+
+// -------------------------------------------------------------------------
+
+function reqUpdateFriendList() {
+  socket.emit('req-udt-friend-list');
+}
+
+socket.on('udt-friend-list', function (data) {
+  friendLogin();
 });

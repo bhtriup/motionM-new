@@ -9,7 +9,7 @@
             </div>
             <div class="login-area">
                 <div class="input-area">
-                    <input type="text" id="userId" name="userId" placeholder="LOGIN" value="정은지"/>
+                    <input type="text" id="userId" name="userId" placeholder="LOGIN"/>
                     <input type="password" id="userPw" name="userPw" placeholder="PASSWORD" value="1234"/>
                 </div>
                 <p class="checkbox">
@@ -45,8 +45,6 @@ function login() {
     //   "Authorization": "Bearer "+token
     // },
     success: (data) => {
-      // let _data = JSON.parse(data);
-      // localStorage.setItem('motion-m-token', _data.user.token);
       localStorage.setItem('user-info', data);
       location.href = '/friend';
     },

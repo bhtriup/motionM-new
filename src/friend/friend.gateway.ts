@@ -21,6 +21,7 @@ export class FriendGateway
   server: Server;
 
   private readonly logger = new Logger(FriendGateway.name);
+  private readonly roomName = 'motion-m-room';
 
   afterInit() {
     this.logger.debug(`Socket Server Init Complete`);
@@ -29,18 +30,18 @@ export class FriendGateway
   async handleConnection(@ConnectedSocket() client: Socket) {
     this.logger.debug(`${client.id} is connected in dashboard!`);
 
-    const roomName = `room-${client.handshake.auth.ykiho}`;
-    await client.join(roomName);
+    // const roomName = `room-${client.handshake.auth.ykiho}`;
+    await client.join(this.roomName);
 
-    this.logger.debug(`${client.id} is joined ${roomName}!`);
+    this.logger.debug(`${client.id} is joined ${this.roomName}!`);
   }
 
   handleDisconnect(client: Socket) {
     this.logger.debug(`${client.id} is disconnected...`);
   }
 
-  @SubscribeMessage('req-udt-online')
+  @SubscribeMessage('req-udt-friend-list')
   handleMessage(@ConnectedSocket() client: Socket) {
-    console.log('online');
+    this.server.to(this.roomName).emit('udt-friend-list');
   }
 }
