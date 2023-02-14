@@ -11,10 +11,13 @@ export class UserController {
    * 회원 정보 얻기
    * @param userId
    */
-  @Get('/:userId')
+  @Get('/:idx/:userId')
   @UseGuards(AuthGuard('jwt'))
-  async getUser(@Param('userId') userId): Promise<UserEntity> {
-    const userInfo = await this.userService.getUser(userId);
+  async getUser(
+    @Param('idx') idx,
+    @Param('userId') userId,
+  ): Promise<UserEntity> {
+    const userInfo = await this.userService.getUser(idx, userId);
 
     return userInfo;
   }

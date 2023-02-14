@@ -107,6 +107,12 @@
 .member_tr{
     display: flex;
     align-items: center;
+
+}
+
+.member_tr.chat__ .date_info{
+    margin-left: auto;
+    text-align: right;
 }
 
 .content .togg-tit{
