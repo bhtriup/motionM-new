@@ -980,7 +980,7 @@
     max-height: 340px;
 }
 .chat-room .chat-room-wrap .ct_body::-webkit-scrollbar {
-    width: 8px;
+    width: 7px;
 }
 .chat-room .chat-room-wrap .ct_body::-webkit-scrollbar-thumb {
     background-color: #DBDBE0;
