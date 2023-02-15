@@ -1,31 +1,53 @@
 <div class="nav-wrap">
     <ul class="nav-body">
         <li>
-            <a id="friend" href="/friend" title="">
+            <a class="menu1" id="friend" href="/friend" title="">
                 <img src="/media/i_profile.png" alt="">
             </a>
         </li>
         <li>
-            <a id="roomList" href="/chat/room-list" title="">
+            <a class="menu1" id="roomList" href="/chat/room-list" title="">
                 <img src="/media/i_chat_list.png" alt="">
             </a>
             <span class="num__">23</span>
         </li>
         <li>
-            <a href="#" title="">
+            <a class="menu1" href="#" title="">
                 <img src="/media/i_new_chat.png" alt="">
             </a>
         </li>
         <li>
-            <a href="#" title="">
-                <img src="/media/i_edit.png" alt="">
-            </a>
+            <div class="btn-more">
+                <a class="chat-menu-i menu1" href="#" title="">
+                    <img src="/media/i_edit.png" alt="">
+                </a>
+                <div class="chat-submenu">
+                    <div>
+                        <a href="#" title="">환경설정</a>
+                    </div>
+                    <div>
+                        <a href="#" title="">내 상태 설정</a>
+                    </div>
+                    <div>
+                        <a href="#" title="">알림 일시정지</a>
+                    </div>
+                    <div>
+                        <a href="#" title="">로그아웃</a>
+                    </div>
+                    <div>
+                        <a href="#" title="">종료</a>
+                    </div>
+                    <div>
+                        <a href="#" title="">어플리케이션 정보</a>
+                    </div>
+                </div>
+            </div>
         </li>
     </ul>
 </div>
 
-
 <script>
+    //페이지 변환시 메뉴 엑티브
     $(document).ready(function() {
         const url = location.href;
         const menu0 = url.indexOf("/friend");
@@ -37,5 +59,29 @@
         if(menu1 != -1) {
             $("#roomList").addClass("active");
         }
+    });
+</script>
+
+<script>
+    //환경설정 메뉴
+    $(document).ready(function(){
+        var target = $(".chat-submenu");
+        $(document).on("click", ".chat-menu-i", function (e){
+            target.show();
+            target.addClass('d-block');
+            $('.chat-menu-i').addClass('active');
+        });
+        $(document).mouseup(function (e){
+            if(target.has(e.target).length==0) {
+                target.hide();
+                target.removeClass('d-block');
+                $('.chat-menu-i').removeClass('active');
+            }
+
+        });
+        $(".chat-submenu > div > a").click(function(){
+            target.hide();
+            target.removeClass('d-block');
+        });
     });
 </script>
