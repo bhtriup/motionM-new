@@ -22,4 +22,8 @@ export class FriendController {
   @Get('/profile')
   @Render('pages/profileview/profileview')
   viewProfile() {}
+
+  @Get('/profile/image')
+  @Render('pages/profileview/profileimgview')
+  viewProfileImage() {}
 }

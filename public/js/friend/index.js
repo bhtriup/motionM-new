@@ -33,3 +33,8 @@ function friendLogin() {
 function logout() {
   userClass.logout();
 }
+
+function chatUser(idx) {
+  // console.log(idx);
+  // location.href =
+}
