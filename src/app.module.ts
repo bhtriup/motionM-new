@@ -8,6 +8,8 @@ import { FriendModule } from './friend/friend.module';
 import { AuthModule } from './auth/auth.module';
 import { CodeModule } from './code/code.module';
 import { ChatModule } from './chat/chat.module';
+import { RoomModule } from './room/room.module';
+import { SettingModule } from './setting/setting.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { ChatModule } from './chat/chat.module';
     AuthModule,
     CodeModule,
     ChatModule,
+    RoomModule,
+    SettingModule,
   ],
   controllers: [],
   providers: [],
