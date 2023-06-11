@@ -5,13 +5,12 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { InternalServerErrorException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { CodeDetailEntity } from '../../code/code.entity';
 
-@Entity('USER_INFO')
+@Entity('USER_INFO', { name: 'users' })
 export class UserEntity {
   @PrimaryColumn({ name: 'IDX' })
   idx: number;
