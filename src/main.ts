@@ -3,7 +3,8 @@ import { AppModule } from './app.module';
 import { join } from 'path';
 import * as config from 'config';
 import * as expressLayouts from 'express-ejs-layouts';
-import {NestExpressApplication} from "@nestjs/platform-express";
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { tenancyMiddleware } from './tenancy/tenancy.middleware';
 
 declare const module: any;
 
@@ -16,6 +17,8 @@ async function bootstrap() {
 
   app.use(expressLayouts);
   app.set('layout', 'layouts/layout');
+
+  app.use(tenancyMiddleware);
 
   const serverConfig = config.get('server');
   const port = serverConfig.port;

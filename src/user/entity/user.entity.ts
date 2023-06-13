@@ -1,21 +1,11 @@
-import {
-  BeforeInsert,
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryColumn,
-} from 'typeorm';
-import { InternalServerErrorException } from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
-import { CodeDetailEntity } from '../../code/code.entity';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('USER_INFO', { name: 'users' })
 export class UserEntity {
-  @PrimaryColumn({ name: 'IDX' })
-  idx: number;
+  @PrimaryColumn({ name: 'YKIHO' })
+  ykiho: string;
 
-  @Column({ name: 'USER_ID' })
+  @PrimaryColumn({ name: 'USER_ID' })
   userId: string;
 
   @Column({ name: 'USER_NM' })
@@ -24,30 +14,30 @@ export class UserEntity {
   @Column({ name: 'USER_PW' })
   userPw: string;
 
-  @Column({ name: 'USER_STATUS' })
-  userStatus: number;
-
-  @ManyToOne(() => CodeDetailEntity)
-  @JoinColumn({ name: 'USER_TEAM' })
-  team: CodeDetailEntity;
-
-  @ManyToOne(() => CodeDetailEntity)
-  @JoinColumn({ name: 'USER_PART' })
-  part: CodeDetailEntity;
-
-  @ManyToOne(() => CodeDetailEntity)
-  @JoinColumn({ name: 'USER_POSITION' })
-  position: CodeDetailEntity;
-
-  @BeforeInsert()
-  async hashPassword() {
-    try {
-      const salt = await bcrypt.genSalt();
-      const hashedPassword = await bcrypt.hash(this.userPw, salt);
-
-      this.userPw = hashedPassword;
-    } catch (e) {
-      throw new InternalServerErrorException();
-    }
-  }
+  // @Column({ name: 'USER_STATUS' })
+  // userStatus: number;
+  //
+  // @ManyToOne(() => CodeDetailEntity)
+  // @JoinColumn({ name: 'USER_TEAM' })
+  // team: CodeDetailEntity;
+  //
+  // @ManyToOne(() => CodeDetailEntity)
+  // @JoinColumn({ name: 'USER_PART' })
+  // part: CodeDetailEntity;
+  //
+  // @ManyToOne(() => CodeDetailEntity)
+  // @JoinColumn({ name: 'USER_POSITION' })
+  // position: CodeDetailEntity;
+  //
+  // @BeforeInsert()
+  // async hashPassword() {
+  //   try {
+  //     const salt = await bcrypt.genSalt();
+  //     const hashedPassword = await bcrypt.hash(this.userPw, salt);
+  //
+  //     this.userPw = hashedPassword;
+  //   } catch (e) {
+  //     throw new InternalServerErrorException();
+  //   }
+  // }
 }

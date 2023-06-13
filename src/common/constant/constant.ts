@@ -1,3 +1,8 @@
+let mInfo = {
+  ykiho: '',
+  type: '',
+};
+
 enum OnlineStatusCode {
   OFF,
   On,
@@ -9,4 +14,4 @@ enum ResponseCode {
   ERROR,
 }
 
-export { OnlineStatusCode, ResponseCode };
+export { OnlineStatusCode, ResponseCode, mInfo };
