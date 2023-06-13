@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Post, Render, UseGuards } from '@nestjs/common';
-import { RoomService } from './room.service';
-import { AuthGuard } from '@nestjs/passport';
-import { RoomUserEntity } from './entity/room.user.entity';
+import {Controller, Get, Post, Render, UseGuards} from '@nestjs/common';
+import {RoomService} from './room.service';
+import {AuthGuard} from '@nestjs/passport';
+import {RoomEntity} from './entity/room.entity';
 
 @Controller('room')
 export class RoomController {
@@ -9,9 +9,10 @@ export class RoomController {
 
   @Post('/exist')
   @UseGuards(AuthGuard('jwt'))
-  // async checkRoomInfo(@Body('')): Promise<RoomUserEntity> {
-  async checkRoomInfo() {
-    return {};
+  async checkRoomInfo(): Promise<RoomEntity[]> {
+    const roomList = this.roomService.getRoomList();
+
+    return roomList;
   }
 
   @Get('/read')

@@ -1,59 +1,25 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable } from '@nestjs/common';
 import { UserEntity } from '../user/entity/user.entity';
 import { Repository } from 'typeorm';
-import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from '../user/dto/create-user.dto';
-import { validate } from 'class-validator';
 import { LoginUserDto } from '../user/dto/login-user.dto';
-import * as bcrypt from 'bcrypt';
+import { mInfo } from '../common/constant/constant';
+const crypto = require('crypto');
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserEntity)
+    // @InjectRepository(UserEntity, 'USER_REPOSITORY')
+    @Inject('USER_REPOSITORY')
     private userRepository: Repository<UserEntity>,
-    private jwtService: JwtService,
   ) {}
-
-  async create(dto: CreateUserDto): Promise<void> {
-    const { id, name, password } = dto;
-
-    const qb = await this.userRepository
-      .createQueryBuilder('user')
-      .where('user.USER_ID = :id', { id });
-
-    const user = await qb.getOne();
-
-    if (user) {
-      const errors = { id: '이미 사용중인 아이디입니다.' };
-      throw new HttpException(
-        { message: 'Input data validation failed', errors },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-
-    const newUser = new UserEntity();
-    newUser.userId = id;
-    newUser.userNm = name;
-    newUser.userPw = password;
-
-    const errors = await validate(newUser);
-    if (errors.length > 0) {
-      const _errors = { userid: '가입 시 오류가 발생하였습니다.' };
-      throw new HttpException(
-        { message: 'Validation failed.', _errors },
-        HttpStatus.BAD_REQUEST,
-      );
-    } else {
-      await this.userRepository.save(newUser);
-    }
-  }
 
   async findOne(loginUserDto: LoginUserDto): Promise<UserEntity> {
     const { userId, userPw } = loginUserDto;
+    const { ykiho, type } = mInfo;
+
     const user = await this.userRepository.findOne({
       where: {
+        ykiho,
         userId,
       },
     });
@@ -62,27 +28,11 @@ export class AuthService {
       return null;
     }
 
-    if (bcrypt.compareSync(userPw, user.userPw)) {
+    const hashPwd = crypto.createHash('sha256').update(userPw).digest('hex');
+    if (hashPwd == user.userPw) {
       return user;
     }
 
     return null;
-  }
-
-  public async generateJWT(user: UserEntity) {
-    const today = new Date();
-    const exp = new Date(today);
-    exp.setDate(today.getDate() + 60);
-
-    const payload = {
-      idx: user.idx,
-      id: user.userId,
-      name: user.userNm,
-      exp: exp.getTime() / 1000,
-    };
-
-    const accessToken = await this.jwtService.sign(payload);
-
-    return accessToken;
   }
 }

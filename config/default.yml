@@ -3,3 +3,11 @@ jwt:
 
 server:
   port: 3003
+
+master-db:
+  type: 'mysql'
+  host: '101.101.210.16'
+  username: 'cdbuser'
+  password: 'dV4s!tpvs^sqcu'
+  port: 3306
+  database: 'MASTER_DB'

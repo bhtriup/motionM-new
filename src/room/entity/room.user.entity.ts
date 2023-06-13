@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { RoomEntity } from './room.entity';
 
-@Entity('ROOM_USER')
+@Entity('ROOM_USER', { name: 'roomUsers' })
 export class RoomUserEntity {
   @PrimaryColumn({ name: 'IDX' })
   idx: number;
@@ -10,4 +11,8 @@ export class RoomUserEntity {
 
   @Column({ name: 'USER_IDX' })
   userIdx: number;
+
+  @ManyToOne(() => RoomEntity)
+  @JoinColumn([{ name: 'ROOM_IDX', referencedColumnName: 'idx' }])
+  roomEntity: RoomEntity;
 }
