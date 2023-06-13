@@ -13,7 +13,6 @@ const jwtConfig = config.get('jwt');
 
 @Module({
   imports: [
-    // TypeOrmModule.forFeature([UserEntity]),
     JwtModule.register({
       secret: jwtConfig.secret,
     }),

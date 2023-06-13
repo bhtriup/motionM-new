@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TenancyModule } from './tenancy/tenancy.module';
 import { AuthModule } from './auth/auth.module';
+import { FrontModule } from './front/front.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     // SettingModule,
     // TestModule,
     TenancyModule,
+    FrontModule,
   ],
   controllers: [],
   providers: [],

@@ -26,15 +26,6 @@ export class AuthController {
   ) {}
 
   /**
-   * 로그인 화면
-   */
-  @Get('/login')
-  @Render('pages/login')
-  logIn() {
-    // 로그인화면
-  }
-
-  /**
    * 로그인 처리
    */
   @UseGuards(AuthGuard('local'))
