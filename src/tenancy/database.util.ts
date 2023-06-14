@@ -56,7 +56,7 @@ export default class DataSourceManager {
       database: dbInfo.NAME,
       // entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       entities: [UserEntity],
-      synchronize: false, // 이거 건들지 마세요
+      synchronize: false, // 이거 건들지 마세요. 큰일남
     });
 
     this.dataSources[ykiho] = newDataSource;

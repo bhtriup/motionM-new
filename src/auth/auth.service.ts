@@ -8,7 +8,6 @@ const crypto = require('crypto');
 @Injectable()
 export class AuthService {
   constructor(
-    // @InjectRepository(UserEntity, 'USER_REPOSITORY')
     @Inject('USER_REPOSITORY')
     private userRepository: Repository<UserEntity>,
   ) {}

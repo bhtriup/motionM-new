@@ -8,13 +8,11 @@ class User extends MotionM {
     let userInfo = this.getUserInfo();
 
     $.ajax({
-      url: `/user/${userInfo.idx}/${userInfo.userId}`,
+      url: `/user/${userInfo.userId}`,
       type: 'GET',
       dataType: 'html',
       async: true,
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+      headers: getHeader(ykiho, '', userInfo.token),
       success: (data) => {
         let _data = JSON.parse(data);
         _this.printUserDetail(_data);

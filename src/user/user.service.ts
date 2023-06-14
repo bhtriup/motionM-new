@@ -14,7 +14,7 @@ export class UserService {
    * @param idx
    * @param userId
    */
-  async getUser(idx: number, userId: string): Promise<UserEntity> {
+  async getUser(userId: string): Promise<UserEntity> {
     // const user = await this.userRepository
     //   .createQueryBuilder('user')
     //   .select([
@@ -38,7 +38,7 @@ export class UserService {
     const user = await this.userRepository.findOne({
       where: {
         ykiho: '22222222',
-        userId: '정은지',
+        userId: 'ADMIN',
       },
     });
     return user;
