@@ -7,7 +7,5 @@ export class LoginController {
    */
   @Get('/login')
   @Render('pages/login')
-  logIn() {
-    // 로그인화면
-  }
+  logIn() {}
 }

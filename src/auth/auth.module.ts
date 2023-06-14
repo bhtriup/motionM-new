@@ -5,9 +5,8 @@ import { JwtModule } from '@nestjs/jwt';
 import * as config from 'config';
 import { JwtStrategy } from '../user/jwt.strategy';
 import { AuthService } from './auth.service';
-import { LocalStrategy } from './local.strategy';
-import { UserService } from '../user/user.service';
 import { userProviders } from '../user/user.provider';
+import { LocalStrategy } from './local.strategy';
 
 const jwtConfig = config.get('jwt');
 
@@ -16,16 +15,11 @@ const jwtConfig = config.get('jwt');
     JwtModule.register({
       secret: jwtConfig.secret,
     }),
-    PassportModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   controllers: [AuthController],
-  providers: [
-    ...userProviders,
-    JwtStrategy,
-    LocalStrategy,
-    AuthService,
-    UserService,
-  ],
-  exports: [AuthService],
+  providers: [...userProviders, AuthService, JwtStrategy, LocalStrategy],
+  // exports: [JwtStrategy, PassportModule, AuthService],
+  exports: [JwtModule],
 })
 export class AuthModule {}

@@ -4,6 +4,7 @@ import { UserEntity } from './entity/user.entity';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
+@UseGuards(AuthGuard('jwt'))
 export class UserController {
   constructor(private userService: UserService) {}
 
@@ -11,13 +12,9 @@ export class UserController {
    * 회원 정보 얻기
    * @param userId
    */
-  @Get('/:idx/:userId')
-  @UseGuards(AuthGuard('jwt'))
-  async getUser(
-    @Param('idx') idx,
-    @Param('userId') userId,
-  ): Promise<UserEntity> {
-    const userInfo = await this.userService.getUser(idx, userId);
+  @Get('/:userId')
+  async getUser(@Param('userId') userId): Promise<UserEntity> {
+    const userInfo = await this.userService.getUser(userId);
 
     return userInfo;
   }
