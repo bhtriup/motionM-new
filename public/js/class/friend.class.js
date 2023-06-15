@@ -5,27 +5,17 @@ class Friend extends MotionM {
     this.userInfo = userInfo;
   }
 
-  getFriendList() {
-    let _this = this;
+  async getFriendList() {
     let userInfo = this.userInfo;
 
-    $.ajax({
-      url: `/user/list`,
-      type: 'GET',
-      dataType: 'html',
-      async: true,
+    let response = await fetch(`/user/list`, {
       headers: getHeader(userInfo.ykiho, '', userInfo.token),
-      success: (data) => {
-        let _data = JSON.parse(data);
-        _this.saveFriendList(_data);
-        _this.printFriendListDetail(_data);
-      },
-      error: (error) => {
-        // console.log('error');
-        console.log(error);
-        // alert('로그인에 실패했습니다.');
-      },
     });
+
+    let data = await response.json();
+
+    this.saveFriendList(data);
+    this.printFriendListDetail(data);
   }
 
   printFriendListDetail(list) {
@@ -39,12 +29,14 @@ class Friend extends MotionM {
     $('#cont-profile-list').html(html);
   }
 
-  setFriendOnlineStatus(list) {
+  setFriendOnlineStatus(data) {
+    const list = data.list;
+
     $('#cont-profile-list .online-state').hide();
 
     this.friendList.forEach((item) => {
       if (list.includes(item.userId)) {
-        $(`.member_tr[data-user-id='${item.userId}']`).show();
+        $(`.member_tr[data-user-id='${item.userId}'] .online-state`).show();
       }
     });
   }

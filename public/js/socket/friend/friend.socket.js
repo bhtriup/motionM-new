@@ -10,7 +10,6 @@ const socket = io.connect(url, {
 
 socket.on('connect', () => {
   console.log('connected!');
-  // reqUpdateFriendList();
 });
 
 socket.on('disconnect', () => {
@@ -19,7 +18,7 @@ socket.on('disconnect', () => {
 });
 
 socket.on('error', (err) => {
-  console.log(`에러 발생 : ${error}`);
+  console.log(`에러 발생 : ${err}`);
 });
 
 socket.on('connect_error', (err) => {

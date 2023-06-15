@@ -49,6 +49,21 @@ export class UserGateway {
     this.server.to(roomName).emit('set-online', { list: this.onlineUserList });
   }
 
+  @SubscribeMessage('req-set-offline')
+  setOffline(
+    @ConnectedSocket() client: Socket,
+    @MessageBody('userId') userId: string,
+  ) {
+    const roomName = this.getRoomName(client);
+
+    var index = this.onlineUserList.indexOf(userId);
+    if (index !== -1) {
+      this.onlineUserList.splice(index, 1);
+    }
+
+    this.server.to(roomName).emit('set-offline', { list: this.onlineUserList });
+  }
+
   @SubscribeMessage('req-online-user-list')
   getOnlineUserList(@ConnectedSocket() client: Socket) {
     const roomName = this.getRoomName(client);
