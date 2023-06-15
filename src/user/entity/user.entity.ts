@@ -14,6 +14,9 @@ export class UserEntity {
   @Column({ name: 'USER_PW' })
   userPw: string;
 
+  @Column({ name: 'USE_YN' })
+  useYn: number;
+
   // @Column({ name: 'USER_STATUS' })
   // userStatus: number;
   //

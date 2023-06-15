@@ -30,6 +30,7 @@ export default class DataSourceManager {
     }
 
     const masterDB = config.get('master-db');
+    const logging = config.get('logging');
 
     const masterConn: Connection = await mysql.createConnection({
       host: masterDB.host,
@@ -56,6 +57,7 @@ export default class DataSourceManager {
       database: dbInfo.NAME,
       // entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       entities: [UserEntity],
+      logging: logging,
       synchronize: false, // 이거 건들지 마세요. 큰일남
     });
 

@@ -8,7 +8,7 @@ class User extends MotionM {
     let userInfo = this.getUserInfo();
 
     $.ajax({
-      url: `/user/${userInfo.userId}`,
+      url: `/user/info`,
       type: 'GET',
       dataType: 'html',
       async: true,

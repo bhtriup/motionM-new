@@ -8,13 +8,11 @@ class Friend extends MotionM {
     let userInfo = this.getUserInfo();
 
     $.ajax({
-      url: `/friend/list`,
+      url: `/user/list`,
       type: 'GET',
       dataType: 'html',
       async: true,
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+      headers: getHeader(userInfo.ykiho, '', userInfo.token),
       success: (data) => {
         let _data = JSON.parse(data);
         _this.saveFriendList(_data);
