@@ -15,8 +15,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     UserModule,
     // OrganizationModule,
-    // FriendModule,
-    // CodeModule,
     // ChatModule,
     // RoomModule,
     // SettingModule,
