@@ -48,7 +48,7 @@ export class AuthController {
     exp.setDate(today.getDate() + 60);
 
     const payload = {
-      // idx: user.idx,
+      ykiho: user.ykiho,
       id: user.userId,
       name: user.userNm,
       exp: exp.getTime() / 1000,

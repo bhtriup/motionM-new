@@ -9,7 +9,7 @@ $(() => {
   userClass.getUserDetailInfo();
 
   // 친구 목록
-  // friendClass.getFriendList();
+  friendClass.getFriendList();
 });
 
 /**
