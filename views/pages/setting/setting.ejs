@@ -1,0 +1,409 @@
+<div class="popup-body">
+    <div class="setting-wrap">
+        <div class="title__">
+            <h2>환경설정</h2>
+            <button class="btn-close">
+                <img src="/media/i-close-g.png" alt=""/>
+            </button>
+        </div>
+        <div class="set-category">
+            <ul class="tab">
+                <li class="active">
+                    <figure>
+                        <img src="/media/i-login.svg" alt="">
+                    </figure>
+                    <p class="tit__">로그인</p>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/media/i-chat.svg" alt="">
+                    </figure>
+                    <p class="tit__">채팅</p>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/media/i-alret.svg" alt="">
+                    </figure>
+                    <p class="tit__">알림</p>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/media/i-lang.svg" alt="">
+                    </figure>
+                    <p class="tit__">언어</p>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/media/i-display.svg" alt="">
+                    </figure>
+                    <p class="tit__">배율</p>
+                </li>
+                <li>
+                    <figure>
+                        <img src="/media/i-connect.svg" alt="">
+                    </figure>
+                    <p class="tit__">연결</p>
+                </li>
+            </ul>
+        </div>
+        <div class="set-tab-menu">
+            <!-- 로그인설정-->
+            <div class="on tab-wrap__">
+                <h3>로그인 설정</h3>
+                <div class="chk-area">
+                    <div class="chk-list">
+                        <div class="">
+                            <input type="checkbox" name="chk" id="login-chk1" class="check-box">
+                            <label for="login-chk1" class="checkbox-label"></label>
+                        </div>
+                        <span class="tit__">로그인 정보 저장</span>
+                    </div>
+                    <div class="chk-list">
+                        <div class="">
+                            <input type="checkbox" name="chk" id="login-chk2" class="check-box">
+                            <label for="login-chk2" class="checkbox-label"></label>
+                            <label for="login-chk2"></label>
+                        </div>
+                        <span class="tit__">로그인 유지</span>
+                    </div>
+                    <div class="chk-list">
+                        <div class="">
+                            <input type="checkbox" name="chk" id="login-chk3" class="check-box">
+                            <label for="login-chk3" class="checkbox-label"></label>
+                            <label for="login-chk3"></label>
+                        </div>
+                        <span class="tit__">윈도우 시작시 자동 실행</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 채팅 설정-->
+            <div class="tab-wrap__">
+                <h3>채팅 설정</h3>
+                <div class="select-area">
+                    <div class="select-wrap">
+                        <div class="list">
+                            <span class="tit__">글꼴</span>
+                            <div class="slt-box_">
+                                <button class="select">
+                                    <span class="select-txt">기본 글꼴</span>
+                                    <span style="width:20px; height:20px;" class="icon__">
+                                        <img src="/media/i-select.svg" alt=""/>
+                                    </span>
+                                </button>
+                                <ul class="select_list">
+                                    <li>나눔고딕</li>
+                                    <li>손글씨등등등</li>
+                                    <li>Noto-sanserif</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="select-wrap">
+                        <div class="list">
+                            <span class="tit__">크기</span>
+                            <div class="slt-box_">
+                                <button class="select">
+                                    <span class="select-txt">보통</span>
+                                    <span style="width:20px; height:20px;" class="icon__">
+                                        <img src="/media/i-select.svg" alt=""/>
+                                    </span>
+                                </button>
+                                <ul class="select_list">
+                                    <li>작게</li>
+                                    <li>보통</li>
+                                    <li>크게</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="select-wrap">
+                        <div class="list">
+                            <span class="tit__">전송키</span>
+                            <div class="slt-box_">
+                                <button class="select">
+                                    <span class="select-txt">Enter</span>
+                                    <span style="width:20px; height:20px;" class="icon__">
+                                        <img src="/media/i-select.svg" alt=""/>
+                                    </span>
+                                </button>
+                                <ul class="select_list">
+                                    <li>Esc</li>
+                                    <li>SpaceBar</li>
+                                    <li>?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="save_path">
+                        <span class="tit__">저장경로</span>
+                        <p class="txt__">C:\Users\전산팀\Downloads\MotionM\Chat</p>
+                        <button>찾아보기</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 알림 설정-->
+            <div class="tab-wrap__">
+                <h3>알림 설정</h3>
+                <div class="chk-area select-area alram">
+                    <div class="chk-list select-wrap">
+                        <div class="list">
+                            <div class="">
+                                <input type="checkbox" name="chk" id="alm-chk1" class="check-box">
+                                <label for="alm-chk1" class="checkbox-label"></label>
+                            </div>
+                            <span class="tit__">팝업 알림</span>
+                            <div class="slt-box_">
+                                <button class="select disable">
+                                    <span class="select-txt">보낸사람 + 내용</span>
+                                    <span style="width:20px; height:20px;" class="icon__">
+                                            <img src="/media/i-select.svg" alt=""/>
+                                        </span>
+                                </button>
+                                <ul class="select_list">
+                                    <li>보낸사람 + 내용</li>
+                                    <li>보낸사람</li>
+                                    <li>내용</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chk-list select-wrap">
+                        <div class="list">
+                            <div class="">
+                                <input type="checkbox" name="chk" id="alm-chk2" class="check-box">
+                                <label for="alm-chk2" class="checkbox-label"></label>
+                            </div>
+                            <span class="tit__">알림 일시정시</span>
+                            <div class="slt-box_">
+                                <button class="select disable">
+                                    <span class="select-txt">1시간</span>
+                                    <span style="width:20px; height:20px;" class="icon__">
+                                        <img src="/media/i-select.svg" alt=""/>
+                                    </span>
+                                </button>
+                                <ul class="select_list">
+                                    <li>10분</li>
+                                    <li>20분</li>
+                                    <li>30분</li>
+                                    <li>1시간</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chk-list">
+                        <div class="">
+                            <input type="checkbox" name="chk" id="alm-chk3" class="check-box">
+                            <label for="alm-chk3" class="checkbox-label"></label>
+                        </div>
+                        <span class="tit__">알림음</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 언어 설정-->
+            <div>
+                <div class="tab-wrap__">
+                    <h3>언어 설정</h3>
+                    <div class="chk-area">
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="radio" name="chk" id="lang-chk1" class="radio-box">
+                                <label for="lang-chk1" class="radio-label"></label>
+                                <label for="lang-chk1"></label>
+                            </div>
+                            <span>한국어</span>
+                        </div>
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="radio" name="chk" id="lang-chk2" class="radio-box">
+                                <label for="lang-chk2" class="radio-label"></label>
+                                <label for="lang-chk2"></label>
+                            </div>
+                            <span>English</span>
+                        </div>
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="radio" name="chk" id="lang-chk3" class="radio-box">
+                                <label for="lang-chk3" class="radio-label"></label>
+                                <label for="lang-chk3"></label>
+                            </div>
+                            <span>中國語</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-btn-wrap">
+                    <button class="btn">적용</button>
+                </div>
+            </div>
+            <!-- 배율 설정-->
+            <div>
+                <div class="tab-wrap__">
+                    <h3>배율 설정</h3>
+                    <div class="chk-area">
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="radio" name="chk" id="dis-chk1" class="radio-box">
+                                <label for="dis-chk1" class="radio-label"></label>
+                                <label for="dis-chk1"></label>
+                            </div>
+                            <span>100% (권장)</span>
+                        </div>
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="radio" name="chk" id="dis-chk2" class="radio-box">
+                                <label for="dis-chk2" class="radio-label"></label>
+                                <label for="dis-chk2"></label>
+                            </div>
+                            <span>150%</span>
+                        </div>
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="radio" name="chk" id="dis-chk3" class="radio-box">
+                                <label for="dis-chk3" class="radio-label"></label>
+                                <label for="dis-chk3"></label>
+                            </div>
+                            <span>200%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-btn-wrap">
+                    <button class="btn">적용</button>
+                </div>
+            </div>
+            <!-- 연결 설정-->
+            <div>
+                <div class="tab-wrap__ connect">
+                    <div class="tit_area">
+                        <h3>연결 설정</h3>
+                        <div class="chk-list">
+                            <div class="">
+                                <input type="checkbox" name="chk" id="connect-chk" class="check-box">
+                                <label for="connect-chk" class="checkbox-label"></label>
+                            </div>
+                            <span class="tit__">로그인 정보 저장</span>
+                        </div>
+                    </div>
+                    <div class="select-area disa-area disable">
+                        <div class="select-wrap">
+                            <div class="list">
+                                <span class="tit__">종류</span>
+                                <div class="slt-box_">
+                                    <button class="select">
+                                        <span class="select-txt">HTTP/HTTPS</span>
+                                        <span style="width:20px; height:20px;" class="icon__">
+                                        <img src="/media/i-select.svg" alt=""/>
+                                    </span>
+                                    </button>
+                                    <ul class="select_list">
+                                        <li>HTTP</li>
+                                        <li>HTTPS</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="txt_input_area">
+                            <div class="input_wrap">
+                                <span class="tit__">서버</span>
+                                <div>
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                            <div class="input_wrap">
+                                <span class="tit__">포트</span>
+                                <div>
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="txt_input_area">
+                            <div class="input_wrap">
+                                <span class="tit__">사용자</span>
+                                <div>
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                            <div class="input_wrap">
+                                <span class="tit__">암호</span>
+                                <div>
+                                    <input type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-btn-wrap">
+                    <button class="btn">적용</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // 탭메뉴
+    $('.set-category .tab li').click(function(){
+        const idx = $(this).index();
+        $('.set-category .tab li').removeClass('active');
+        $(this).addClass('active');
+        $('.set-category .tab li').eq(idx).addClass('on');
+        $('.set-tab-menu>div').hide();
+        $('.set-tab-menu>div').eq(idx).show();
+    });
+    // 체크박스 체크시 셀렉트 박스 활성,비활성
+    $(function() {
+        $('.check-box').change(function() {
+            if ($(this).is(":checked")) {
+                $(this).parent().siblings('.slt-box_').children('.select').removeClass('disable');
+                $(this).parent().parent().parent().siblings('.disa-area').removeClass('disable');
+                console.log('체크박스 선택');
+            } else {
+                $(this).parent().siblings('.slt-box_').children('.select').addClass('disable');
+                $(this).parent().parent().parent().siblings('.disa-area').addClass('disable');
+            }
+        });
+    });
+    //셀렉트박스
+    let selectFlag;
+    $('.select').on('click', function() {
+        $(this).toggleClass('selected');
+        if($(this).hasClass('selected')) {
+            $(this).next().show();
+        } else {
+            $(this).next().hide();
+        }
+    })
+    $('.select').on('focusin', function() {
+        $(this).next().show();
+    });
+    $('.select').on('focusout', function() {
+        if(!selectFlag) {
+            $(this).next().hide();
+        }
+        $(this).removeClass('selected');
+    });
+    $('.select_list li').on('mouseenter', function() {
+        selectFlag = true;
+    });
+    $('.select_list li').on('mouseout', function() {
+        selectFlag = false;
+    });
+    $('.select_list li').on('click', function() {
+        $('.select_list li').removeClass('active');
+        let value = $(this).attr('value');
+        $(this).addClass('active');
+        $(this).parent().prev().children('.select-txt').text($(this).text());
+        $('.select_list').hide();
+    });
+    // //체크 박스 체크시 셀렉트 기능 막기
+    // $(document).ready(function() {
+    //     $('.checkbox-label').click(function() {
+    //         if ($(this).prev():check) {
+    //             $(this).parent().siblings('.select').removeClass('disable');
+    //         } else {
+    //             $(this).parent().siblings('.select').addClass('disable');
+    //         }
+    //     });
+    // });
+</script>
