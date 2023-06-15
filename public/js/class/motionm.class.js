@@ -12,11 +12,6 @@ class MotionM {
       offStatus = 'display: none;';
     }
 
-    let positionArr = [];
-    if (info.team?.codeNm) positionArr.push(info.team.codeNm);
-    if (info.part?.codeNm) positionArr.push(info.part.codeNm);
-    if (info.position?.codeNm) positionArr.push(info.position.codeNm);
-
     let imgUrl = '/media/pf-dummy02.png';
     if (info.profile) {
       imgUrl = `data:image/png;base64,${info.profile}`;
@@ -32,7 +27,7 @@ class MotionM {
           </div>
           <div class="profile-info">
               <p class=pb-2>${info.userNm}</p>
-              <span>${positionArr.join('/')}</span>
+              <span>${info.job}</span>
           </div>
         </div>
     `;

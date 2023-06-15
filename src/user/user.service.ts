@@ -13,27 +13,39 @@ export class UserService {
    * 로그인 회원 정보
    */
   async getUser(ykiho: string, userId: string): Promise<UserEntity> {
-    const userInfo = await this.userRepository.findOne({
-      where: {
-        ykiho,
-        userId,
-      },
-    });
+    const userInfo = await this.userRepository
+      .createQueryBuilder('user')
+      .select([
+        'user.ykiho AS ykiho',
+        'user.userId AS userId',
+        'user.userNm AS userNm',
+        'user.profile AS profile',
+        'GET_CDNAME(user.ykiho, "CD0003", user.jobCd) AS job',
+      ])
+      .where('user.ykiho = :ykiho', { ykiho })
+      .andWhere('user.useYn = 1')
+      .andWhere('user.userId = :userId', { userId })
+      .orderBy('user.userNm')
+      .getRawOne();
 
     return userInfo;
   }
 
   async getUserList(ykiho: string, userId: string): Promise<UserEntity[]> {
-    const userList = await this.userRepository.find({
-      select: {
-        userPw: false,
-      },
-      where: {
-        ykiho,
-        useYn: 1,
-        userId: Not(userId),
-      },
-    });
+    const userList = await this.userRepository
+      .createQueryBuilder('user')
+      .select([
+        'user.ykiho AS ykiho',
+        'user.userId AS userId',
+        'user.userNm AS userNm',
+        'user.profile AS profile',
+        'GET_CDNAME(user.ykiho, "CD0003", user.jobCd) AS job',
+      ])
+      .where('user.ykiho = :ykiho', { ykiho })
+      .andWhere('user.useYn = 1')
+      .andWhere('user.userId != :userId', { userId })
+      .orderBy('user.userNm')
+      .getRawMany();
 
     return userList;
   }
