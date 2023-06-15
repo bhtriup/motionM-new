@@ -27,6 +27,7 @@ class Friend extends MotionM {
       },
     });
   }
+
   printFriendListDetail(list) {
     let _this = this;
     let html = '';
@@ -36,6 +37,16 @@ class Friend extends MotionM {
     });
 
     $('#cont-profile-list').html(html);
+  }
+
+  setFriendOnlineStatus(list) {
+    $('#cont-profile-list .online-state').hide();
+
+    this.friendList.forEach((item) => {
+      if (list.includes(item.userId)) {
+        $(`.member_tr[data-user-id='${item.userId}']`).show();
+      }
+    });
   }
 
   saveFriendList(list) {

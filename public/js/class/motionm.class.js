@@ -1,8 +1,8 @@
 class MotionM {
   mappingUserDetail(info) {
-    let offStatus = '';
-    if (info.userStatus === UserStatus.OFF) {
-      offStatus = 'display: none;';
+    let onlineStatus = 'display: none;';
+    if (info.userId === userInfo.userId) {
+      onlineStatus = '';
     }
 
     let imgUrl = '/media/pf-dummy02.png';
@@ -11,12 +11,12 @@ class MotionM {
     }
 
     let html = `
-        <div class="member_tr" onclick="chatUser('${info.idx}')">
+        <div class="member_tr" onclick="chatUser('${info.userId}')" data-user-id="${info.userId}">
           <div class="profile-img">
               <figure>
                   <img src="${imgUrl}" alt=""/>
               </figure>
-              <span class="online-state" style="${offStatus}"></span>
+              <span class="online-state" style="${onlineStatus}"></span>
           </div>
           <div class="profile-info">
               <p class=pb-2>${info.userNm}</p>

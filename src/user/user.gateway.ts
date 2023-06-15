@@ -27,8 +27,8 @@ export class UserGateway {
   async handleConnection(@ConnectedSocket() client: Socket) {
     this.logger.debug(`${client.id} is connected in friend-list!`);
 
-    // const roomName = `room-${client.handshake.auth.ykiho}`;
-    await client.join(this.roomName);
+    const roomName = this.getRoomName(client);
+    await client.join(roomName);
 
     this.logger.debug(`${client.id} is joined ${this.roomName}!`);
   }
@@ -37,19 +37,25 @@ export class UserGateway {
     this.logger.debug(`${client.id} is disconnected...`);
   }
 
-  // @SubscribeMessage('req-udt-friend-list')
-  // handleMessage(@ConnectedSocket() client: Socket) {
-  //   this.server.to(this.roomName).emit('udt-friend-list');
-  // }
+  @SubscribeMessage('req-set-online')
+  setOnline(
+    @ConnectedSocket() client: Socket,
+    @MessageBody('userId') userId: string,
+  ) {
+    const roomName = this.getRoomName(client);
+
+    if (!this.onlineUserList.includes(userId)) this.onlineUserList.push(userId);
+
+    this.server.to(roomName).emit('set-online', { list: this.onlineUserList });
+  }
 
   @SubscribeMessage('req-online-user-list')
-  handleMessage(
-    @ConnectedSocket() client: Socket,
-    @MessageBody('') patno: string,
-  ) {
-    this.server.to(this.roomName).emit('udt-friend-list');
+  getOnlineUserList(@ConnectedSocket() client: Socket) {
+    const roomName = this.getRoomName(client);
 
-    this.onlineUserList.push();
+    this.server
+      .to(roomName)
+      .emit('udt-friend-list', { list: this.onlineUserList });
   }
 
   private getRoomName(client: Socket) {

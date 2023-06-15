@@ -13,7 +13,9 @@ $(() => {
   // 친구 목록
   friendClass.getFriendList();
 
-  loadJS('/js/socket/friend.socket.js');
+  // 소켓 파일 호출
+  loadJS('/js/socket/friend/friend.socket.js');
+  loadJS('/js/socket/friend/friend.event.js');
 });
 
 /**
