@@ -1,11 +1,13 @@
 class Friend extends MotionM {
-  constructor() {
+  constructor(userInfo) {
     super();
+
+    this.userInfo = userInfo;
   }
 
   getFriendList() {
     let _this = this;
-    let userInfo = this.getUserInfo();
+    let userInfo = this.userInfo;
 
     $.ajax({
       url: `/user/list`,

@@ -1,18 +1,20 @@
 class User extends MotionM {
-  constructor() {
+  constructor(userInfo) {
     super();
+
+    this.userInfo = userInfo;
   }
 
   getUserDetailInfo() {
     let _this = this;
-    let userInfo = this.getUserInfo();
+    let userInfo = this.userInfo;
 
     $.ajax({
       url: `/user/info`,
       type: 'GET',
       dataType: 'html',
       async: true,
-      headers: getHeader(ykiho, '', userInfo.token),
+      headers: getHeader(userInfo.ykiho, '', userInfo.token),
       success: (data) => {
         let _data = JSON.parse(data);
         _this.printUserDetail(_data);
@@ -32,7 +34,7 @@ class User extends MotionM {
   }
 
   logout() {
-    let userInfo = this.getUserInfo();
+    let userInfo = this.userInfo;
 
     $.ajax({
       url: `/auth/logout`,

@@ -7,5 +7,3 @@ const UserStatus = {
 };
 
 const FRONT_URL = '/front';
-
-const ykiho = '22222222'; // TODO - 임시

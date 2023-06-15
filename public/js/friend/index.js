@@ -1,15 +1,19 @@
 let userClass;
 let friendClass;
 
+const userInfo = getUserInfo();
+
 $(() => {
-  userClass = new User();
-  friendClass = new Friend();
+  userClass = new User(userInfo);
+  friendClass = new Friend(userInfo);
 
   // 로그인 유저 정보 가져오기
   userClass.getUserDetailInfo();
 
   // 친구 목록
   friendClass.getFriendList();
+
+  loadJS('/js/socket/friend.socket.js');
 });
 
 /**
