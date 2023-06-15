@@ -5,26 +5,16 @@ class User extends MotionM {
     this.userInfo = userInfo;
   }
 
-  getUserDetailInfo() {
-    let _this = this;
+  async getUserDetailInfo() {
     let userInfo = this.userInfo;
 
-    $.ajax({
-      url: `/user/info`,
-      type: 'GET',
-      dataType: 'html',
-      async: true,
+    let response = await fetch(`/user/info`, {
       headers: getHeader(userInfo.ykiho, '', userInfo.token),
-      success: (data) => {
-        let _data = JSON.parse(data);
-        _this.printUserDetail(_data);
-      },
-      error: (error) => {
-        // console.log('error');
-        console.log(error);
-        // alert('로그인에 실패했습니다.');
-      },
     });
+
+    let data = await response.json();
+
+    this.printUserDetail(data);
   }
 
   printUserDetail(info) {
