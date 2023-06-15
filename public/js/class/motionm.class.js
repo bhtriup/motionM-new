@@ -17,11 +17,16 @@ class MotionM {
     if (info.part?.codeNm) positionArr.push(info.part.codeNm);
     if (info.position?.codeNm) positionArr.push(info.position.codeNm);
 
+    let imgUrl = '/media/pf-dummy02.png';
+    if (info.profile) {
+      imgUrl = `data:image/png;base64,${info.profile}`;
+    }
+
     let html = `
         <div class="member_tr" onclick="chatUser('${info.idx}')">
           <div class="profile-img">
               <figure>
-                  <img src="/media/pf-dummy02.png" alt=""/>
+                  <img src="${imgUrl}" alt=""/>
               </figure>
               <span class="online-state" style="${offStatus}"></span>
           </div>

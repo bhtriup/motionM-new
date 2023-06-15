@@ -25,6 +25,9 @@ export class UserService {
 
   async getUserList(ykiho: string, userId: string): Promise<UserEntity[]> {
     const userList = await this.userRepository.find({
+      select: {
+        userPw: false,
+      },
       where: {
         ykiho,
         useYn: 1,

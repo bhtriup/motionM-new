@@ -17,6 +17,9 @@ export class UserEntity {
   @Column({ name: 'USE_YN' })
   useYn: number;
 
+  @Column({ name: 'PROF_IMG' })
+  profile: string;
+
   // @Column({ name: 'USER_STATUS' })
   // userStatus: number;
   //
