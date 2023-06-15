@@ -20,6 +20,9 @@ export class UserEntity {
   @Column({ name: 'PROF_IMG' })
   profile: string;
 
+  @Column({ name: 'JOB_TYPE_CD' })
+  jobCd: string;
+
   // @Column({ name: 'USER_STATUS' })
   // userStatus: number;
   //
