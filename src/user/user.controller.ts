@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { UserEntity } from './entity/user.entity';
 import { AuthGuard } from '../auth/auth.guard';
 import { User } from './user.decorator';
+import { converProfileImage } from '../common/constant/function';
 
 @Controller('user')
 @UseGuards(AuthGuard)
@@ -20,6 +21,10 @@ export class UserController {
     // 로그인 정보
     const userInfo = await this.userService.getUser(ykiho, id);
 
+    // 이미지 변환
+    if (userInfo.profile)
+      userInfo.profile = converProfileImage(userInfo.profile);
+
     return userInfo;
   }
 
@@ -29,6 +34,11 @@ export class UserController {
 
     // 직원 목록
     const userList = await this.userService.getUserList(ykiho, id);
+
+    userList.forEach(function (item) {
+      if (item.profile) item.profile = converProfileImage(item.profile);
+      else item.profile = '';
+    });
 
     return userList;
   }
