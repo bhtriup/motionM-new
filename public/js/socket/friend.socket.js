@@ -1,13 +1,16 @@
-url += '/friend';
-console.log(url);
+url += '/user';
+
 const socket = io.connect(url, {
   secure: true,
   transports: ['websocket'],
+  auth: {
+    ykiho: userInfo.ykiho,
+  },
 });
 
 socket.on('connect', () => {
   console.log('connected!');
-  reqUpdateFriendList();
+  // reqUpdateFriendList();
 });
 
 socket.on('disconnect', () => {

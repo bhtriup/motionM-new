@@ -9,7 +9,7 @@
             </div>
             <div class="login-area">
                 <div class="input-area">
-                    <input type="text" id="userId" name="userId" placeholder="LOGIN"/>
+                    <input type="text" id="userId" name="userId" placeholder="LOGIN" value="ADMIN"/>
                     <input type="password" id="userPw" name="userPw" placeholder="PASSWORD" value="1234"/>
                 </div>
                 <p class="checkbox">
@@ -26,6 +26,8 @@
 </div>
 
 <script>
+const ykiho = '22222222'; // TODO - 임시
+
 function login() {
   localStorage.clear();
 
@@ -41,12 +43,10 @@ function login() {
     },
     dataType: "html",
     async: true,
-    // headers: {
-    //   "Authorization": "Bearer "+token
-    // },
+    headers: getHeader(ykiho, 0),
     success: (data) => {
       localStorage.setItem('user-info', data);
-      location.href = '/friend';
+      location.href = FRONT_URL+'/friend';
     },
     error: (error) => {
       // console.log('error');

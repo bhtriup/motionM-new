@@ -1,11 +1,4 @@
 class MotionM {
-  getUserInfo() {
-    let _data = localStorage.getItem('user-info');
-    let _user = JSON.parse(_data);
-
-    return _user.user;
-  }
-
   mappingUserDetail(info) {
     let offStatus = '';
     if (info.userStatus === UserStatus.OFF) {
