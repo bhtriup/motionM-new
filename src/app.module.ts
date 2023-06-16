@@ -4,7 +4,7 @@ import { TenancyModule } from './tenancy/tenancy.module';
 import { FrontModule } from './front/front.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { ChatModule } from './chat/chat.module';
+import { RoomModule } from './room/room.module';
 
 @Module({
   imports: [
@@ -16,8 +16,8 @@ import { ChatModule } from './chat/chat.module';
     AuthModule,
     UserModule,
     // OrganizationModule,
-    ChatModule,
-    // RoomModule,
+    // ChatModule,
+    RoomModule,
     // SettingModule,
     // TestModule,
     TenancyModule,

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 import { RoomUserEntity } from './room.user.entity';
 
 @Entity('CHAT_ROOM', { name: 'rooms' })
