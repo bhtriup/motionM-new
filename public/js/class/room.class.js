@@ -26,21 +26,29 @@ class Room {
   }
 
   mappingRoomList(item) {
+    const today = getToday();
+    let lastMsgTime = getDateTime(item.lastMsgTime, 'date');
+
+    if (today == lastMsgTime)
+      lastMsgTime = getDateTime(item.lastMsgTime, 'time');
+
+    let imgUrl = '/media/pf-dummy02.png';
+
     let html = `
         <li class="member_tr list__ chat__">
             <a href="#" title="">
                 <div class="profile-img">
                     <figure>
-                        <img src="/media/pf-dummy01.png" alt=""/>
+                        <img src="${imgUrl}" alt=""/>
                     </figure>
-                    <span class="online-state"></span>
+<!--                    <span class="online-state"></span>-->
                 </div>
                 <div class="profile-info">
                     <p class=pb-2>${item.chatNm}</p>
                     <span>${item.lastMsg}</span>
                 </div>
                 <div class="date_info">
-                    <p class="date">${item.lastMsgTime}</p>
+                    <p class="date">${lastMsgTime}</p>
                     <span class="chat_num">${item.unreadCount}</span>
                 </div>
             </a>
