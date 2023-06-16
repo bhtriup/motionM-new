@@ -194,6 +194,8 @@
 .content .ours-list .member_tr .profile-img figure{
     width:44px;
     height:44px;
+    overflow: hidden;
+    border-radius: 50em;
 }
 
 .content .member_tr .profile-img figure img{
@@ -214,7 +216,6 @@
     display: flex;
     flex-wrap: wrap;
 }
-
 .content .member_tr .group-chat-img .list__ li{
     position:relative;
     width:50%;
@@ -227,7 +228,35 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
-
+.content .member_tr .group-chat-img.odds .list__{
+    flex-wrap: nowrap;
+}
+.content .member_tr .group-chat-img.odds .list__ li{
+    width:100%;
+}
+.content .member_tr .group-chat-img.odds .list__ li:first-child{
+    /*height: 44px;*/
+    /*scale: 1.5;*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 0;*/
+    /*!* right: 0; *!*/
+    /*transform: translatey(-50%);*/
+}
+.content .member_tr .group-chat-img.odds .list__ li:first-child img{
+    scale: 2;
+    top: 11px;
+    left: 0;
+    transform: translate(0, 0);
+}
+.content .member_tr .group-chat-img.odds .list__ li:last-child img{
+    position: static;
+    transform: translate(0,0);
+}
+/*.content .member_tr .group-chat-img.odds .list__ li img{
+    position: static;
+    transform: translate(0, 0);
+}*/
 .content .member_tr .profile-img .online-state{
     position: absolute;
     bottom: 0;
