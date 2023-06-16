@@ -2,6 +2,8 @@ import { DataSource } from 'typeorm';
 import { Connection } from 'mysql2';
 import * as config from 'config';
 import { UserEntity } from '../user/entity/user.entity';
+import { RoomEntity } from '../room/entity/room.entity';
+import { RoomUserEntity } from '../room/entity/room.user.entity';
 const mysql = require('mysql2/promise');
 
 export default class DataSourceManager {
@@ -56,7 +58,7 @@ export default class DataSourceManager {
       password: dbInfo.PASSWORD,
       database: dbInfo.NAME,
       // entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      entities: [UserEntity],
+      entities: [UserEntity, RoomEntity, RoomUserEntity],
       logging: logging,
       synchronize: false, // 이거 건들지 마세요. 큰일남
     });
