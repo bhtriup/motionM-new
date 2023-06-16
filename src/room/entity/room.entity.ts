@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 import { RoomUserEntity } from './room.user.entity';
 
 @Entity('CHAT_ROOM', { name: 'rooms' })
@@ -21,7 +21,6 @@ export class RoomEntity {
   @Column({ name: 'LAST_MSG_TIME' })
   lastMsgTime: string;
 
-  @ManyToOne(() => RoomUserEntity)
-  // @JoinColumn([{ name: 'ROOM_IDX', referencedColumnName: 'IDX' }])
-  users: RoomUserEntity[];
+  @OneToMany((type) => RoomUserEntity, (roomUser) => roomUser.room)
+  users!: RoomUserEntity[];
 }

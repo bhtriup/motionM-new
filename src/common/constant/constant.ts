@@ -3,6 +3,11 @@ let mInfo = {
   type: '',
 };
 
+const DB_TYPE = {
+  user: '0',
+  chat: '5',
+};
+
 enum OnlineStatusCode {
   OFF,
   On,
@@ -14,4 +19,4 @@ enum ResponseCode {
   ERROR,
 }
 
-export { OnlineStatusCode, ResponseCode, mInfo };
+export { OnlineStatusCode, ResponseCode, mInfo, DB_TYPE };

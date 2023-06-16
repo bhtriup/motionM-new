@@ -5,7 +5,7 @@ import { roomProviders } from './room.provider';
 import { JwtService } from '@nestjs/jwt';
 
 @Module({
-  // imports: [TypeOrmModule.forFeature([RoomUserEntity, RoomEntity])],
+  imports: [],
   controllers: [RoomController],
   providers: [...roomProviders, RoomService, JwtService],
 })

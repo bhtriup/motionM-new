@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn, JoinColumn } from 'typeorm';
 import { RoomEntity } from './room.entity';
 
 @Entity('ROOM_USER', { name: 'roomUsers' })
@@ -9,10 +9,10 @@ export class RoomUserEntity {
   @Column({ name: 'ROOM_IDX' })
   roomIdx: number;
 
-  @Column({ name: 'USER_IDX' })
-  userIdx: number;
+  @Column({ name: 'USER_NM' })
+  USER_NM: string;
 
-  @ManyToOne(() => RoomEntity)
-  @JoinColumn([{ name: 'ROOM_IDX', referencedColumnName: 'idx' }])
-  roomEntity: RoomEntity;
+  @ManyToOne((type) => RoomEntity, (room) => room.users)
+  @JoinColumn([{ name: 'ROOM_IDX' }])
+  room!: RoomEntity;
 }

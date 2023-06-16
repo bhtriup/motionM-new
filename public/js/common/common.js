@@ -3,9 +3,8 @@ function getHeader(ykiho, type, token) {
     'x-ykiho': ykiho,
   };
 
-  if (type) {
-    headerObj['x-type'] = type;
-  }
+  if (type) headerObj['x-type'] = type;
+  else headerObj['x-type'] = '0';
 
   if (token) {
     headerObj.Authorization = 'Bearer ' + token;
