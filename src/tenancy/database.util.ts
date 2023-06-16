@@ -4,6 +4,7 @@ import * as config from 'config';
 import { UserEntity } from '../user/entity/user.entity';
 import { RoomEntity } from '../room/entity/room.entity';
 import { RoomUserEntity } from '../room/entity/room.user.entity';
+import { DB_TYPE } from '../common/constant/constant';
 const mysql = require('mysql2/promise');
 
 export default class DataSourceManager {
@@ -24,8 +25,10 @@ export default class DataSourceManager {
   }
 
   async getDBDataSource(ykiho: string, type: string): Promise<DataSource> {
-    if (this.dataSources[ykiho]) {
-      const dataSource = this.dataSources[ykiho];
+    const key = this.getKey(ykiho, type);
+
+    if (this.dataSources[key]) {
+      const dataSource = this.dataSources[key];
       return Promise.resolve(
         dataSource.isInitialized ? dataSource : dataSource.initialize(),
       );
@@ -44,11 +47,15 @@ export default class DataSourceManager {
 
     const [rows]: any = await masterConn.execute(
       `SELECT IP, ID, PASSWORD, NAME, PORT FROM MASTER_DB.DB_INFO where ykiho = ? and item = ? `,
-      [ykiho, 0],
+      [ykiho, type],
     );
     masterConn.end();
 
     const dbInfo = rows[0];
+
+    let entities = [];
+    if (DB_TYPE.user == type) entities = [UserEntity];
+    else entities = [RoomEntity, RoomUserEntity];
 
     const newDataSource = new DataSource({
       type: 'mysql',
@@ -58,13 +65,17 @@ export default class DataSourceManager {
       password: dbInfo.PASSWORD,
       database: dbInfo.NAME,
       // entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      entities: [UserEntity, RoomEntity, RoomUserEntity],
+      entities: entities,
       logging: logging,
       synchronize: false, // 이거 건들지 마세요. 큰일남
     });
 
-    this.dataSources[ykiho] = newDataSource;
+    this.dataSources[key] = newDataSource;
 
     return Promise.resolve(newDataSource.initialize());
+  }
+
+  private getKey(ykiho: string, type: string) {
+    return ykiho + '-' + type;
   }
 }

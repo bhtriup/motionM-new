@@ -4,7 +4,6 @@ import { REQUEST } from '@nestjs/core';
 
 export const databaseProviders = [
   {
-    // 이 부분에서 provide에 CONNECTION이라는 값이 들어가게 됩니다.
     provide: 'DATA_SOURCE',
     scope: Scope.REQUEST,
     inject: [REQUEST, DatabaseService],
