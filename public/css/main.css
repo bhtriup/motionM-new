@@ -197,6 +197,38 @@
     overflow: hidden;
     border-radius: 50em;
 }
+.content .ours-list .member_tr .profile-img .box__{
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border-radius: 50em;
+}
+.content .ours-list .member_tr .profile-img .multiple{
+    display: flex;
+    flex-wrap: wrap;
+}
+.content .ours-list .member_tr .profile-img .multiple > p{
+    border-right: 0;
+    width: 50%;
+}
+.content .ours-list .member_tr .profile-img .three{
+}
+.content .ours-list .member_tr .profile-img .three > p:first-child{
+    position: relative;
+    float: left;
+    height: 100%;
+}
+.content .ours-list .member_tr .profile-img .three > p:first-child img{
+    position: absolute;
+    left: 0;
+    top: 25%;
+    scale: 2;
+    z-index: -1;
+}
+.content .ours-list .member_tr .profile-img .three > p{
+    width: 50%;
+    float: right;
+}
 
 .content .member_tr .profile-img figure img{
     width:100%;

@@ -11,13 +11,14 @@
             </div>
             <div class="ct_wrap">
                 <div class="ours-profile">
-                    <ul class="ours-list chat" id="chat-room-list">
+                    <figure class="ours-list chat" id="chat-room-list">
+                        <!--한명 일때-->
                         <li class="member_tr list__ chat__">
                             <a href="#" title="">
                                 <div class="profile-img">
-                                    <figure>
-                                        <img src="/media/pf-dummy01.png" alt=""/>
-                                    </figure>
+                                    <div class="personal box__">
+                                        <p><img src="/media/pf-dummy01.png" alt=""/></p>
+                                    </div>
                                     <span class="online-state"></span>
                                 </div>
                                 <div class="profile-info">
@@ -30,15 +31,16 @@
                                 </div>
                             </a>
                         </li>
+                        <!--4명 이상 일때-->
                         <li class="member_tr list__ chat__">
                             <a href="#" title="">
-                                <div class="group-chat-img">
-                                    <ul class="list__">
-                                        <li><img src="/media/nemo-dummy0.png" alt=""/></li>
-                                        <li><img src="/media/nemo-dummy1.png" alt=""/></li>
-                                        <li><img src="/media/nemo-dummy0.png" alt=""/></li>
-                                        <li><img src="/media/nemo-dummy1.png" alt=""/></li>
-                                    </ul>
+                                <div class="profile-img">
+                                    <div class="multiple box__">
+                                        <p><img src="/media/nemo-dummy0.png" alt=""/></p>
+                                        <p><img src="/media/nemo-dummy1.png" alt=""/></p>
+                                        <p><img src="/media/nemo-dummy0.png" alt=""/></p>
+                                        <p><img src="/media/nemo-dummy1.png" alt=""/></p>
+                                    </div>
                                     <span class="online-state"></span>
                                 </div>
                                 <div class="profile-info">
@@ -51,19 +53,16 @@
                                 </div>
                             </a>
                         </li>
+                        <!--3명 일때 -->
                         <li class="member_tr list__ chat__">
                             <a href="#" title="">
                                 <div class="profile-img">
-                                    <div class="group-chat-img odds">
-                                        <ul class="list__">
-                                            <li><img src="/media/nemo-dummy0.png" alt=""/></li>
-                                            <li>
-                                                <img src="/media/nemo-dummy1.png" alt=""/>
-                                                <img src="/media/nemo-dummy0.png" alt=""/>
-                                            </li>
-                                        </ul>
-                                        <span class="online-state"></span>
+                                    <div class="three box__">
+                                        <p><img src="/media/nemo-dummy0.png" alt=""/></p>
+                                        <p><img src="/media/nemo-dummy1.png" alt=""/></p>
+                                        <p><img src="/media/nemo-dummy0.png" alt=""/></p>
                                     </div>
+                                    <span class="online-state"></span>
                                 </div>
                                 <div class="profile-info">
                                     <p class=pb-2>김구구</p>
