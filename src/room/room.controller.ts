@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomEntity } from './entity/room.entity';
 import { User } from '../user/user.decorator';
@@ -19,11 +19,15 @@ export class RoomController {
     return roomList;
   }
 
-  @Post('/exist')
-  async checkRoomInfo(): Promise<RoomEntity[]> {
-    // const roomList = this.roomService.getRoomList();
-    //
-    // return roomList;
-    return [];
+  @Get('/:roomIdx')
+  async isMyRoom(@User() user, @Param('roomIdx') roomIdx: string) {
+    // 채팅방화면
+    const { ykiho, id } = user;
+
+    const isMyRoom = await this.roomService.isMyRoom(roomIdx, id);
+
+    return {
+      isMyRoom,
+    };
   }
 }

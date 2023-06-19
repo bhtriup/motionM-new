@@ -36,7 +36,7 @@ class Room {
 
     let html = `
         <li class="member_tr list__ chat__">
-            <a href="#" title="">
+            <a href="/front/room/${item.idx}" title="">
                 <div class="profile-img">
                     <figure>
                         <img src="${imgUrl}" alt=""/>

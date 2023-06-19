@@ -2,12 +2,6 @@ import { Controller, Get, Render } from '@nestjs/common';
 
 @Controller('front/chat')
 export class ChatController {
-  @Get('/room-list')
-  @Render('pages/chatlist/chatlist')
-  chatRoomList() {
-    // 채팅방 목록
-  }
-
   @Get('/info')
   @Render('pages/chatroom/chatinfo')
   chatInfo() {

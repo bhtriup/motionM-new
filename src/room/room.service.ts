@@ -18,4 +18,17 @@ export class RoomService {
 
     return myRoomList;
   }
+
+  async isMyRoom(roomIdx: string, id: string): Promise<Boolean> {
+    const myRoom = await this.roomRepository
+      .createQueryBuilder('room')
+      .leftJoinAndSelect('room.users', 'roomUsers')
+      .where('roomUsers.userId = :id', { id })
+      .andWhere('roomUsers.roomIdx = :roomIdx', { roomIdx })
+      .getCount();
+
+    if (myRoom <= 0) return false;
+
+    return true;
+  }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Param, Render } from '@nestjs/common';
 
 @Controller('front/room')
 export class RoomController {
@@ -8,10 +8,13 @@ export class RoomController {
     // 채팅방 목록
   }
 
-  @Get('/')
+  @Get('/:roomIdx')
   @Render('pages/chatroom/chatroom')
-  chatRoom() {
+  chatRoom(@Param('roomIdx') roomIdx: string) {
     // 채팅방화면
+    return {
+      roomIdx,
+    };
   }
 
   @Get('/read')
