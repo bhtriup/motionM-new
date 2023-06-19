@@ -14,6 +14,9 @@ export class ChatEntity {
   @Column({ name: 'MSG' })
   msg: string;
 
+  @Column({ name: 'READ_COUNT' })
+  readCount: number;
+
   @Column({ name: 'SEND_DT' })
   sendDt: string;
 }

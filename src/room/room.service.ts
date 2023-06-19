@@ -9,11 +9,11 @@ export class RoomService {
     private readonly roomRepository: Repository<RoomEntity>,
   ) {}
 
-  async getRoomList(id: string): Promise<RoomEntity[]> {
+  async getRoomList(userId: string): Promise<RoomEntity[]> {
     const myRoomList = await this.roomRepository
       .createQueryBuilder('room')
       .leftJoinAndSelect('room.users', 'roomUsers')
-      .where('roomUsers.userId = :id', { id })
+      .where('roomUsers.userId = :userId', { userId })
       .getMany();
 
     return myRoomList;

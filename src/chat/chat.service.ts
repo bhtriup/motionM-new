@@ -5,7 +5,7 @@ import { ChatEntity } from './entity/chat.entity';
 @Injectable()
 export class ChatService {
   constructor(
-    @Inject('ROOM_REPOSITORY')
+    @Inject('CHAT_REPOSITORY')
     private readonly chatRepository: Repository<ChatEntity>,
   ) {}
 
@@ -21,6 +21,18 @@ export class ChatService {
       .skip(offset) // offset
       .orderBy({ 'chat.sendDt': 'DESC' })
       .getMany();
+
+    return chatList;
+  }
+
+  async getUnreadChatCount(userId: string, roomIdx: number, date: string) {
+    const qb = await this.chatRepository
+      .createQueryBuilder('chat')
+      .where('chat.roomIdx = :roomIdx', { roomIdx });
+
+    if (date) qb.andWhere('chat.sendDt > :date', { date });
+
+    const chatList = qb.getCount();
 
     return chatList;
   }
