@@ -1,6 +1,9 @@
 import {
   ConnectedSocket,
   MessageBody,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+  OnGatewayInit,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
@@ -12,7 +15,9 @@ import { Logger } from '@nestjs/common';
   namespace: 'user',
   transports: ['websocket'],
 })
-export class UserGateway {
+export class UserGateway
+  implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit
+{
   @WebSocketServer()
   server: Server;
 
