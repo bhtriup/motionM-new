@@ -34,7 +34,7 @@ export class RoomController {
     return roomList;
   }
 
-  @Get('/:roomIdx')
+  @Get('/check/:roomIdx')
   async isMyRoom(@User() user, @Param('roomIdx') roomIdx: string) {
     // 채팅방화면
     const { ykiho, id } = user;
@@ -44,5 +44,18 @@ export class RoomController {
     return {
       isMyRoom,
     };
+  }
+
+  @Get('/:roomIdx')
+  async getRoomInfo(
+    @User() user,
+    @Param('roomIdx') roomIdx: string,
+  ): Promise<RoomEntity> {
+    // 채팅방화면
+    const { ykiho, id } = user;
+
+    const roomInfo = await this.roomService.getRoomInfo(roomIdx, id);
+
+    return roomInfo;
   }
 }
