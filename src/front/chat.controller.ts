@@ -8,12 +8,6 @@ export class ChatController {
     // 채팅방 목록
   }
 
-  @Get('/room')
-  @Render('pages/chatroom/chatroom')
-  chatRoom() {
-    // 채팅방화면
-  }
-
   @Get('/info')
   @Render('pages/chatroom/chatinfo')
   chatInfo() {

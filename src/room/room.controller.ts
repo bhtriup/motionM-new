@@ -14,15 +14,16 @@ export class RoomController {
     const { ykiho, id } = user;
 
     // 로그인 정보
-    const roomList = await this.roomService.getRoomList();
+    const roomList = await this.roomService.getRoomList(id);
 
     return roomList;
   }
 
   @Post('/exist')
   async checkRoomInfo(): Promise<RoomEntity[]> {
-    const roomList = this.roomService.getRoomList();
-
-    return roomList;
+    // const roomList = this.roomService.getRoomList();
+    //
+    // return roomList;
+    return [];
   }
 }

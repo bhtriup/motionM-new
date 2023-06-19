@@ -9,8 +9,8 @@ export class RoomUserEntity {
   @Column({ name: 'ROOM_IDX' })
   roomIdx: number;
 
-  @Column({ name: 'USER_NM' })
-  USER_NM: string;
+  @Column({ name: 'USER_ID' })
+  userId: string;
 
   @ManyToOne((type) => RoomEntity, (room) => room.users)
   @JoinColumn([{ name: 'ROOM_IDX' }])
