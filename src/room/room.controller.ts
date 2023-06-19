@@ -1,29 +1,48 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomEntity } from './entity/room.entity';
 import { User } from '../user/user.decorator';
 import { AuthGuard } from '../auth/auth.guard';
+import { ChatService } from '../chat/chat.service';
 
 @Controller('room')
 @UseGuards(AuthGuard)
 export class RoomController {
-  constructor(private roomService: RoomService) {}
+  constructor(
+    private roomService: RoomService,
+    private chatService: ChatService,
+  ) {}
 
   @Get('/list')
   async getRoomList(@User() user): Promise<RoomEntity[]> {
     const { ykiho, id } = user;
 
-    // 로그인 정보
+    // 채팅방 목록
     const roomList = await this.roomService.getRoomList(id);
+
+    for (const room of roomList) {
+      const user = room.users[0];
+      const unreadChatCount = await this.chatService.getUnreadChatCount(
+        id,
+        room.idx,
+        user.lastEnterDt,
+      );
+
+      room.unreadCount = unreadChatCount;
+    }
 
     return roomList;
   }
 
-  @Post('/exist')
-  async checkRoomInfo(): Promise<RoomEntity[]> {
-    // const roomList = this.roomService.getRoomList();
-    //
-    // return roomList;
-    return [];
+  @Get('/:roomIdx')
+  async isMyRoom(@User() user, @Param('roomIdx') roomIdx: string) {
+    // 채팅방화면
+    const { ykiho, id } = user;
+
+    const isMyRoom = await this.roomService.isMyRoom(roomIdx, id);
+
+    return {
+      isMyRoom,
+    };
   }
 }

@@ -12,6 +12,9 @@ export class RoomUserEntity {
   @Column({ name: 'USER_ID' })
   userId: string;
 
+  @Column({ name: 'LAST_ENTER_DT' })
+  lastEnterDt: string;
+
   @ManyToOne((type) => RoomEntity, (room) => room.users)
   @JoinColumn([{ name: 'ROOM_IDX' }])
   room!: RoomEntity;

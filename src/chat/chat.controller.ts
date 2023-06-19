@@ -1,43 +1,31 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '../auth/auth.guard';
 import { ChatService } from './chat.service';
+import { User } from '../user/user.decorator';
+import { getOffset } from '../common/constant/function';
+import { ChatEntity } from './entity/chat.entity';
 
 @Controller('chat')
+@UseGuards(AuthGuard)
 export class ChatController {
-  constructor(private readonly chatService: ChatService) {}
+  private readonly limit = 20;
 
-  @Get('/room-list')
-  @Render('pages/chatlist/chatlist')
-  chatRoomList() {
-    // 채팅방 목록
-  }
+  constructor(private chatService: ChatService) {}
 
-  @Get('/room')
-  @Render('pages/chatroom/chatroom')
-  chatRoom() {
-    // 채팅방화면
-  }
+  @Get('/list')
+  async getChatList(
+    @User() user,
+    @Query('roomIdx') roomIdx: number,
+    @Query('page') page: number,
+  ): Promise<ChatEntity[]> {
+    const offset = getOffset(page, this.limit);
+    // 로그인 정보
+    const chatList = await this.chatService.getChatList(
+      roomIdx,
+      offset,
+      this.limit,
+    );
 
-  @Get('/info')
-  @Render('pages/chatroom/chatinfo')
-  chatInfo() {
-    // 채팅방 정보
-  }
-
-  @Get('/edit')
-  @Render('pages/chatroom/chatedit')
-  chatEdit() {
-    // 채팅방 편집
-  }
-
-  @Get('/new')
-  @Render('pages/chatroom/newchat')
-  chatNew() {
-    // 채팅방 만들기
-  }
-
-  @Get('/search')
-  @Render('pages/chatroom/chatdatesearch')
-  chatDateSearch() {
-    // 채팅방날짜이동
+    return chatList;
   }
 }

@@ -34,9 +34,15 @@ class Room {
 
     let imgUrl = '/media/pf-dummy02.png';
 
+    let isCountVisible = '';
+    if (item.unreadCount == 0) isCountVisible = ' display: none; ';
+
+    let chatNm = item.chatNm;
+    if (item.userCount > 2) chatNm += `(${item.userCount})`;
+
     let html = `
         <li class="member_tr list__ chat__">
-            <a href="#" title="">
+            <a href="/front/room/${item.idx}" title="">
                 <div class="profile-img">
                     <figure>
                         <img src="${imgUrl}" alt=""/>
@@ -44,12 +50,12 @@ class Room {
 <!--                    <span class="online-state"></span>-->
                 </div>
                 <div class="profile-info">
-                    <p class=pb-2>${item.chatNm}</p>
+                    <p class=pb-2>${chatNm}</p>
                     <span>${item.lastMsg}</span>
                 </div>
                 <div class="date_info">
                     <p class="date">${lastMsgTime}</p>
-                    <span class="chat_num">${item.unreadCount}</span>
+                    <span class="chat_num" style="${isCountVisible}">${item.unreadCount}</span>
                 </div>
             </a>
         </li>

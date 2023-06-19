@@ -9,13 +9,26 @@ export class RoomService {
     private readonly roomRepository: Repository<RoomEntity>,
   ) {}
 
-  async getRoomList(id: string): Promise<RoomEntity[]> {
+  async getRoomList(userId: string): Promise<RoomEntity[]> {
     const myRoomList = await this.roomRepository
       .createQueryBuilder('room')
       .leftJoinAndSelect('room.users', 'roomUsers')
-      .where('roomUsers.userId = :id', { id })
+      .where('roomUsers.userId = :userId', { userId })
       .getMany();
 
     return myRoomList;
+  }
+
+  async isMyRoom(roomIdx: string, id: string): Promise<Boolean> {
+    const myRoom = await this.roomRepository
+      .createQueryBuilder('room')
+      .leftJoinAndSelect('room.users', 'roomUsers')
+      .where('roomUsers.userId = :id', { id })
+      .andWhere('roomUsers.roomIdx = :roomIdx', { roomIdx })
+      .getCount();
+
+    if (myRoom <= 0) return false;
+
+    return true;
   }
 }
