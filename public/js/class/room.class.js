@@ -44,9 +44,11 @@ class Room {
         <li class="member_tr list__ chat__">
             <a href="/front/room/${item.idx}" title="">
                 <div class="profile-img">
-                    <figure>
-                        <img src="${imgUrl}" alt=""/>
-                    </figure>
+                    <div class="three box__">
+                        <p><img src="${imgUrl}" alt=""/></p>
+                        <p><img src="${imgUrl}" alt=""/></p>
+                        <p><img src="${imgUrl}" alt=""/></p>
+                    </div>
 <!--                    <span class="online-state"></span>-->
                 </div>
                 <div class="profile-info">
