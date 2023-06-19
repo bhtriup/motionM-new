@@ -8,6 +8,12 @@ export class RoomController {
     // 채팅방 목록
   }
 
+  @Get('/')
+  @Render('pages/chatroom/chatroom')
+  chatRoom() {
+    // 채팅방화면
+  }
+
   @Get('/read')
   @Render('pages/chatroom/readmember')
   chatRead() {
