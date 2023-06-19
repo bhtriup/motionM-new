@@ -48,6 +48,9 @@ function getDateTime(datetime, type) {
     case 'time':
       dateTimeStr = getTime(datetime);
       break;
+    case 'time-no-sec':
+      dateTimeStr = getTime(datetime).slice(0, 7).trim();
+      break;
   }
 
   return dateTimeStr;

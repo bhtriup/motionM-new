@@ -7,4 +7,8 @@ function converProfileImage(img) {
   return imgBase64;
 }
 
-export { converProfileImage };
+function getOffset(page, limit) {
+  return page * limit - limit;
+}
+
+export { converProfileImage, getOffset };

@@ -8,7 +8,7 @@ $(() => {
   // 소켓 파일 호출
   // loadJS('/js/socket/friend/friend.event.js');
 
-  getRoomList();
+  getChatInfo();
 });
 
 /**
@@ -20,4 +20,6 @@ async function getChatInfo() {
   if (isMyRoom == false) {
     location.href = FRONT_URL + '/login';
   }
+
+  await chatClass.getChatList(roomIdx);
 }
