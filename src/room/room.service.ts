@@ -31,4 +31,14 @@ export class RoomService {
 
     return true;
   }
+
+  async getRoomInfo(roomIdx: string, id: string): Promise<RoomEntity> {
+    const roomInfo = await this.roomRepository
+      .createQueryBuilder('room')
+      .leftJoinAndSelect('room.users', 'roomUsers')
+      .andWhere('roomUsers.roomIdx = :roomIdx', { roomIdx })
+      .getOne();
+
+    return roomInfo;
+  }
 }

@@ -44,9 +44,11 @@ class Room {
         <li class="member_tr list__ chat__">
             <a href="/front/room/${item.idx}" title="">
                 <div class="profile-img">
-                    <figure>
-                        <img src="${imgUrl}" alt=""/>
-                    </figure>
+                    <div class="three box__">
+                        <p><img src="${imgUrl}" alt=""/></p>
+                        <p><img src="${imgUrl}" alt=""/></p>
+                        <p><img src="${imgUrl}" alt=""/></p>
+                    </div>
 <!--                    <span class="online-state"></span>-->
                 </div>
                 <div class="profile-info">
@@ -61,5 +63,40 @@ class Room {
         </li>
     `;
     return html;
+  }
+
+  async isMyRoom(roomIdx) {
+    let userInfo = this.userInfo;
+
+    let response = await fetch(`/room/check/${roomIdx}`, {
+      headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
+    });
+
+    let data = await response.json();
+
+    return data;
+  }
+
+  /**
+   * 채팅방 정보
+   */
+  async getRoomInfo(roomIdx) {
+    let userInfo = this.userInfo;
+
+    let response = await fetch(`/room/${roomIdx}`, {
+      headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
+    });
+
+    let data = await response.json();
+
+    this.printRoomInfo(data);
+  }
+
+  printRoomInfo(data) {
+    let chatNm = data.chatNm;
+    if (data.userCount > 2) chatNm += `(${data.userCount})`;
+
+    $('#room-info .room-name').text(chatNm);
+    $('#room-info .room-user-count').text(data.userCount);
   }
 }
