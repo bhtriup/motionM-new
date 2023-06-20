@@ -1,10 +1,12 @@
 /**
  * 로그인 처리
  */
-// function setOnline() {
-//   socket.emit('message', { userId });
-// }
-//
-// socket.on('set-online', function (data) {
-//   friendClass.setFriendOnlineStatus(data);
-// });
+function sendMsg(data) {
+  // console.log(data);
+  socket.emit('send-msg', data);
+}
+
+socket.on('get-msg', function (data) {
+  // friendClass.setFriendOnlineStatus(data);
+  chatClass.mappingChatLeft(data);
+});
