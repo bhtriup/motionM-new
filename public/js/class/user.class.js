@@ -23,6 +23,27 @@ class User extends MotionM {
     $('#cont-user-info').html(html);
   }
 
+  async getUserListInRoom(ids) {
+    let userInfo = this.userInfo;
+
+    let response = await fetch(`/user/in-room?userIds=${ids}`, {
+      headers: getHeader(userInfo.ykiho, '', userInfo.token),
+    });
+
+    let data = await response.json();
+
+    return data;
+  }
+
+  getUserIds(users) {
+    const userIds = [];
+    for (const user of users) {
+      userIds.push(user.userId);
+    }
+
+    return userIds;
+  }
+
   logout() {
     let userInfo = this.userInfo;
 

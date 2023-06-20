@@ -49,4 +49,26 @@ export class UserService {
 
     return userList;
   }
+
+  async getUserListInRoom(
+    ykiho: string,
+    userId: string,
+    userIds: string[],
+  ): Promise<UserEntity[]> {
+    const userList = await this.userRepository
+      .createQueryBuilder('user')
+      .select([
+        'user.ykiho AS ykiho',
+        'user.userId AS userId',
+        'user.userNm AS userNm',
+        'user.profile AS profile',
+        'GET_CDNAME(user.ykiho, "CD0003", user.jobCd) AS job',
+      ])
+      .where('user.ykiho = :ykiho', { ykiho })
+      .andWhere('user.useYn = 1')
+      .andWhere('user.userId IN (:...userIds) ', { userIds })
+      .getRawMany();
+
+    return userList;
+  }
 }

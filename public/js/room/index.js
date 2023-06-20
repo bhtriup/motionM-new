@@ -1,8 +1,10 @@
+let userClass;
 let roomClass;
 
 const userInfo = getUserInfo();
 
 $(() => {
+  userClass = new User(userInfo);
   roomClass = new Room(userInfo);
 
   // 소켓 파일 호출

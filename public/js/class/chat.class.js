@@ -1,10 +1,15 @@
 class Chat {
   constructor(userInfo) {
+    this.roomIdx = roomIdx;
     this.userInfo = userInfo;
     this.page = 1;
+
+    this.userList = [];
   }
 
-  async getChatList(roomIdx) {
+  async getChatList() {
+    const roomIdx = this.roomIdx;
+
     let response = await fetch(
       `/chat/list?roomIdx=${roomIdx}&page=${this.page}`,
       {
@@ -22,19 +27,23 @@ class Chat {
     let html = '';
 
     list.forEach((item) => {
-      html += this.mappingChatLeft(item);
+      const chatUserInfo = _.find(this.userList, { userId: item.userId });
 
-      if (item.userId != userInfo.userId) html += this.mappingChatLeft(item);
-      else html += this.mappingChatRight(item);
+      if (item.userId != userInfo.userId)
+        html += this.mappingChatLeft(item, chatUserInfo);
+      else html += this.mappingChatRight(item, chatUserInfo);
     });
 
     $('#chat-list').prepend(html);
   }
 
-  mappingChatLeft(item) {
+  mappingChatLeft(item, chatUserInfo) {
     const sendDt = getDateTime(item.sendDt, 'time-no-sec');
 
     let imgUrl = '/media/pf-dummy02.png';
+    if (chatUserInfo.profile) {
+      imgUrl = `data:image/png;base64,${chatUserInfo.profile}`;
+    }
 
     let html = `
       <div class="chatting-left">
@@ -63,10 +72,8 @@ class Chat {
     return html;
   }
 
-  mappingChatRight(item) {
+  mappingChatRight(item, chatUserInfo) {
     const sendDt = getDateTime(item.sendDt, 'time-no-sec');
-
-    let imgUrl = '/media/pf-dummy02.png';
 
     let html = `
       <div class="chatting-right">
