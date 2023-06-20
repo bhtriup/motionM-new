@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import { ChatReadEntity } from './chat.read.entity';
 
 @Entity('MSG_INFO', { name: 'chat' })
 export class ChatEntity {
@@ -19,4 +20,7 @@ export class ChatEntity {
 
   @Column({ name: 'SEND_DT' })
   sendDt: string;
+
+  @OneToOne(() => ChatReadEntity, (read) => read.chat)
+  read!: ChatReadEntity;
 }

@@ -1,16 +1,21 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../auth/auth.guard';
 import { ChatService } from './chat.service';
 import { User } from '../user/user.decorator';
 import { getOffset } from '../common/constant/function';
 import { ChatEntity } from './entity/chat.entity';
+import { ChatReadService } from './chat.read.service';
+import { ChatReadEntity } from './entity/chat.read.entity';
 
 @Controller('chat')
 @UseGuards(AuthGuard)
 export class ChatController {
   private readonly limit = 20;
 
-  constructor(private chatService: ChatService) {}
+  constructor(
+    private chatService: ChatService,
+    private chatReadService: ChatReadService,
+  ) {}
 
   @Get('/list')
   async getChatList(
@@ -19,7 +24,7 @@ export class ChatController {
     @Query('page') page: number,
   ): Promise<ChatEntity[]> {
     const offset = getOffset(page, this.limit);
-    // 로그인 정보
+
     const chatList = await this.chatService.getChatList(
       roomIdx,
       offset,
@@ -27,5 +32,37 @@ export class ChatController {
     );
 
     return chatList;
+  }
+
+  @Post('/read/:roomIdx')
+  async readMsg(@User() user, @Param('roomIdx') roomIdx: number) {
+    const { ykiho, id } = user;
+
+    const readIds = await this.chatReadService.getMsgReadUser(roomIdx, id);
+
+    if (readIds.length <= 0) return;
+
+    for (const readId of readIds) {
+      const read = new ChatReadEntity();
+      read.idx = readId.idx;
+      read.roomIdx = readId.roomIdx;
+      read.msgIdx = readId.msgIdx;
+
+      if (!readId.readIds) {
+        // 읽음처리
+        read.readIds = id;
+        await this.chatReadService.setRead(read);
+        continue;
+      }
+
+      const readIdArr = readId.readIds.split(',');
+      if (!readIdArr.includes(id)) {
+        // 읽음처리
+        readIdArr.push(id);
+        read.readIds = readIdArr.join(',');
+
+        await this.chatReadService.setRead(read);
+      }
+    }
   }
 }

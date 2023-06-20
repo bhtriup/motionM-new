@@ -1,6 +1,9 @@
 class Room {
-  constructor(userInfo) {
+  constructor(userInfo, roomIdx) {
+    this.roomIdx = roomIdx;
     this.userInfo = userInfo;
+    this.roomInfo = {};
+    this.userList = [];
   }
 
   async getRoomList() {
@@ -65,8 +68,9 @@ class Room {
     return html;
   }
 
-  async isMyRoom(roomIdx) {
+  async isMyRoom() {
     let userInfo = this.userInfo;
+    const roomIdx = this.roomIdx;
 
     let response = await fetch(`/room/check/${roomIdx}`, {
       headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
@@ -80,14 +84,16 @@ class Room {
   /**
    * 채팅방 정보
    */
-  async getRoomInfo(roomIdx) {
+  async getRoomInfo() {
     let userInfo = this.userInfo;
+    const roomIdx = this.roomIdx;
 
     let response = await fetch(`/room/${roomIdx}`, {
       headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
     });
 
     let data = await response.json();
+    this.roomInfo = data;
 
     this.printRoomInfo(data);
   }
@@ -98,5 +104,14 @@ class Room {
 
     $('#room-info .room-name').text(chatNm);
     $('#room-info .room-user-count').text(data.userCount);
+  }
+
+  async processMsgRead() {
+    const roomIdx = this.roomIdx;
+
+    await fetch(`/chat/read/${roomIdx}`, {
+      method: 'POST',
+      headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
+    });
   }
 }

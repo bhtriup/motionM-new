@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserEntity } from './entity/user.entity';
 import { AuthGuard } from '../auth/auth.guard';
@@ -34,6 +34,29 @@ export class UserController {
 
     // 직원 목록
     const userList = await this.userService.getUserList(ykiho, id);
+
+    userList.forEach(function (item) {
+      if (item.profile) item.profile = converProfileImage(item.profile);
+      else item.profile = '';
+    });
+
+    return userList;
+  }
+
+  @Get('/in-room')
+  async getUserListInRoom(
+    @User() user,
+    @Query('userIds') userIds: string,
+  ): Promise<UserEntity[]> {
+    const { ykiho, id } = user;
+    const userIdsArr = userIds.split(',');
+
+    // 직원 목록
+    const userList = await this.userService.getUserListInRoom(
+      ykiho,
+      id,
+      userIdsArr,
+    );
 
     userList.forEach(function (item) {
       if (item.profile) item.profile = converProfileImage(item.profile);

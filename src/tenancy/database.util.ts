@@ -6,6 +6,7 @@ import { RoomEntity } from '../room/entity/room.entity';
 import { RoomUserEntity } from '../room/entity/room.user.entity';
 import { DB_TYPE } from '../common/constant/constant';
 import { ChatEntity } from '../chat/entity/chat.entity';
+import { ChatReadEntity } from '../chat/entity/chat.read.entity';
 const mysql = require('mysql2/promise');
 
 export default class DataSourceManager {
@@ -56,7 +57,7 @@ export default class DataSourceManager {
 
     let entities = [];
     if (DB_TYPE.user == type) entities = [UserEntity];
-    else entities = [RoomEntity, RoomUserEntity, ChatEntity];
+    else entities = [RoomEntity, RoomUserEntity, ChatEntity, ChatReadEntity];
 
     const newDataSource = new DataSource({
       type: 'mysql',
