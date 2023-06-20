@@ -18,16 +18,20 @@ class Chat {
   }
 
   async printChatList(list) {
+    const userInfo = this.userInfo;
     let html = '';
 
     list.forEach((item) => {
-      html += this.mappingChat(item);
+      html += this.mappingChatLeft(item);
+
+      if (item.userId != userInfo.userId) html += this.mappingChatLeft(item);
+      else html += this.mappingChatRight(item);
     });
 
     $('#chat-list').prepend(html);
   }
 
-  mappingChat(item) {
+  mappingChatLeft(item) {
     const sendDt = getDateTime(item.sendDt, 'time-no-sec');
 
     let imgUrl = '/media/pf-dummy02.png';
@@ -57,5 +61,34 @@ class Chat {
     `;
 
     return html;
+  }
+
+  mappingChatRight(item) {
+    const sendDt = getDateTime(item.sendDt, 'time-no-sec');
+
+    let imgUrl = '/media/pf-dummy02.png';
+
+    let html = `
+      <div class="chatting-right">
+          <ul class="chat-txt-width">
+              <li class="chat-txt-box">
+                  <div class="reading-time-wrap">
+                      <span><b><img src="/media/i-read.png" alt=""></b> 읽음 20</span>
+                      <span>${sendDt}</span>
+                  </div>
+                  <p>${item.msg}</p>
+              </li>
+          </ul>
+      </div>
+    `;
+
+    return html;
+  }
+
+  async sendMsg(msg) {
+    const { token, userId } = this.userInfo;
+    // console.log(this.userInfo);
+    // console.log(msg);
+    sendMsg({ userId, msg });
   }
 }

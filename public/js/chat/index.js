@@ -8,10 +8,22 @@ $(() => {
   chatClass = new Chat(userInfo);
 
   // 소켓 파일 호출
-  // loadJS('/js/socket/friend/friend.event.js');
+  loadJS('/js/socket/chat/chat.event.js');
 
   // 채팅방 정보
   getChatInfo();
+
+  $('#msg-box').on('keydown', function (event) {
+    if (event.keyCode == 13)
+      if (!event.shiftKey) {
+        event.preventDefault();
+        const msg = $(this).val();
+        if (!msg) return false;
+
+        chatClass.sendMsg(msg);
+        $(this).val('');
+      }
+  });
 });
 
 /**
