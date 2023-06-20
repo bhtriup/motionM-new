@@ -10,10 +10,10 @@ export class FriendController {
   index() {}
 
   @Get('/profile')
-  @Render('pages/profileview/profileview')
+  @Render('pages/member/profileview')
   viewProfile() {}
 
   @Get('/profile/image')
-  @Render('pages/profileview/profileimgview')
+  @Render('pages/member/profileDetail')
   viewProfileImage() {}
 }
