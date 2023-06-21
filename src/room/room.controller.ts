@@ -1,15 +1,17 @@
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { RoomEntity } from './entity/room.entity';
 import { User } from '../user/user.decorator';
 import { AuthGuard } from '../auth/auth.guard';
 import { ChatService } from '../chat/chat.service';
+import { RoomUserService } from './room.user.service';
 
 @Controller('room')
 @UseGuards(AuthGuard)
 export class RoomController {
   constructor(
     private roomService: RoomService,
+    private roomUserService: RoomUserService,
     private chatService: ChatService,
   ) {}
 
@@ -57,5 +59,10 @@ export class RoomController {
     const roomInfo = await this.roomService.getRoomInfo(roomIdx, id);
 
     return roomInfo;
+  }
+
+  @Post('/last-enter')
+  async updateLastEnterDt(@User() user, @Body('idx') idx: number) {
+    await this.roomUserService.saveRoomUser(idx);
   }
 }

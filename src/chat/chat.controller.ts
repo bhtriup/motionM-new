@@ -52,6 +52,8 @@ export class ChatController {
         // 읽음처리
         read.readIds = id;
         await this.chatReadService.setRead(read);
+
+        await this.chatService.updateReadCount(read.idx, 1);
         continue;
       }
 
@@ -62,6 +64,8 @@ export class ChatController {
         read.readIds = readIdArr.join(',');
 
         await this.chatReadService.setRead(read);
+
+        await this.chatService.updateReadCount(read.idx, readIdArr.length);
       }
     }
   }
