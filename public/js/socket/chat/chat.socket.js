@@ -5,6 +5,7 @@ const socket = io.connect(url, {
   transports: ['websocket'],
   auth: {
     roomIdx: roomIdx,
+    ykiho: userInfo.ykiho,
   },
 });
 

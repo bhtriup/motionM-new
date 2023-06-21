@@ -94,8 +94,7 @@ class Chat {
 
   async sendMsg(msg) {
     const { token, userId } = this.userInfo;
-    // console.log(this.userInfo);
-    // console.log(msg);
-    sendMsg({ userId, msg });
+    const roomIdx = this.roomIdx;
+    sendMsg({ roomIdx, userId, msg });
   }
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 import { ChatReadEntity } from './chat.read.entity';
 
 @Entity('MSG_INFO', { name: 'chat' })

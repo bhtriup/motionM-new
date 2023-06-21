@@ -54,6 +54,4 @@ async function getChatInfo() {
 
   // 채팅 목록
   await chatClass.getChatList();
-
-  // 소켓통신 종료 후 마지막 입장 시간 저장
 }

@@ -48,4 +48,8 @@ export class ChatService {
 
     await this.chatRepository.save(chat);
   }
+
+  async insertMsg(chat: ChatEntity) {
+    await this.chatRepository.save(chat);
+  }
 }

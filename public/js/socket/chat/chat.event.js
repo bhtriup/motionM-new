@@ -7,6 +7,6 @@ function sendMsg(data) {
 }
 
 socket.on('get-msg', function (data) {
-  // friendClass.setFriendOnlineStatus(data);
-  chatClass.mappingChatLeft(data);
+  console.log(data);
+  // chatClass.mappingChatLeft(data);
 });
