@@ -61,8 +61,10 @@ export class RoomController {
     return roomInfo;
   }
 
-  @Post('/last-enter')
-  async updateLastEnterDt(@User() user, @Body('idx') idx: number) {
-    await this.roomUserService.saveRoomUser(idx);
+  @Post('/:roomIdx/last-enter')
+  async updateLastEnterDt(@User() user, @Param('roomIdx') roomIdx: number) {
+    const { ykiho, id } = user;
+
+    await this.roomUserService.saveRoomUser(roomIdx, id);
   }
 }

@@ -116,12 +116,9 @@ class Room {
   }
 
   async updateLastEnterDt() {
-    await fetch(`/room/last-enter`, {
+    await fetch(`/room/${this.roomIdx}/last-enter`, {
       method: 'POST',
       headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
-      body: JSON.stringify({
-        idx: this.roomInfo.idx,
-      }),
     });
   }
 }

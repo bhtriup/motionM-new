@@ -10,10 +10,11 @@ export class RoomUserService {
     private readonly roomUserRepository: Repository<RoomUserEntity>,
   ) {}
 
-  async saveRoomUser(idx: number) {
+  async saveRoomUser(roomIdx: number, userId: string) {
     const roomUser: RoomUserEntity = await this.roomUserRepository.findOne({
       where: {
-        idx,
+        roomIdx,
+        userId,
       },
     });
 
