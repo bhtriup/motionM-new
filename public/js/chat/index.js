@@ -41,12 +41,18 @@ async function getChatInfo() {
   // 메시지 읽음 처리
   await roomClass.processMsgRead();
 
+  // 방에 접속한 마지막 시간
+  await roomClass.updateLastEnterDt();
+
+  // 방 정보
   await roomClass.getRoomInfo();
 
+  // 방에 있는 유저들
   chatClass.userList = await userClass.getUserListInRoom(
     userClass.getUserIds(roomClass.roomInfo.users),
   );
 
+  // 채팅 목록
   await chatClass.getChatList();
 
   // 소켓통신 종료 후 마지막 입장 시간 저장

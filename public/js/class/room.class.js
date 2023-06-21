@@ -114,4 +114,14 @@ class Room {
       headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
     });
   }
+
+  async updateLastEnterDt() {
+    await fetch(`/room/last-enter`, {
+      method: 'POST',
+      headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
+      body: JSON.stringify({
+        idx: this.roomInfo.idx,
+      }),
+    });
+  }
 }

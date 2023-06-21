@@ -36,4 +36,16 @@ export class ChatService {
 
     return chatList;
   }
+
+  async updateReadCount(idx: number, readCount: number) {
+    const chat: ChatEntity = await this.chatRepository.findOne({
+      where: {
+        idx,
+      },
+    });
+
+    chat.readCount = readCount;
+
+    await this.chatRepository.save(chat);
+  }
 }
