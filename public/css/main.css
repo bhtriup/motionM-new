@@ -189,6 +189,8 @@
     width: 60px;
     height: 60px;
     position:relative;
+    overflow: hidden;
+    border-radius: 50em;
 }
 
 .content .ours-list .member_tr .profile-img figure{
@@ -867,7 +869,6 @@
     width:100%;
     height:100%;
 }
-
 .chat-main .chat-info .btn-more .chat-menu-i {
     display: block;
     width: 20px;
@@ -877,6 +878,47 @@
 }
 .chat-main .chat-info .btn-more img {
     max-width: 100%;
+}
+/*새로운 채팅 전화하기*/
+.new-chat-submenu{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #AAAAAA;
+    right: 0;
+    top: 10px;
+    left: 40px;
+    width: 300px;
+    border-radius: 10px;
+}
+.new-chat-submenu .new-chat-wrap{
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #AAAAAA;
+}
+.new-chat-submenu .btn-close{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+.new-chat-submenu .new-chat-wrap > div{
+    width:100%;
+}
+.new-chat-submenu .new-chat-wrap > div a{
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new-chat-submenu .new-chat-wrap > div:first-child{
+    border-right: 1px solid #DDDDDD;
+}
+.new-chat-submenu .new-chat-wrap > div a figure{
+    padding-bottom: 0.5rem;
 }
 .chat-main .chat-info .btn-more .chat-submenu,
 .nav-wrap .btn-more .chat-submenu{
@@ -888,12 +930,10 @@
     background-color: #FFFFFF;
     border: 1px solid #AAAAAA;
 }
-
 .nav-wrap .btn-more .chat-submenu{
     top: 10px;
     left: 40px;
 }
-
 .chat-main .chat-info .btn-more .chat-submenu li a,
 .nav-wrap .btn-more .chat-submenu > div a{
     display: block;
@@ -906,11 +946,9 @@
 .chat-main .chat-info .btn-more .chat-submenu li:hover a{
     background-color: #DDDDDD;
 }
-
 .nav-wrap .btn-more .chat-submenu div:hover{
     background-color:#FBF0E4;
 }
-
 .chat-main .chatting-scroll {
     overflow-y: scroll;
     background-color: #F6F6F6;
