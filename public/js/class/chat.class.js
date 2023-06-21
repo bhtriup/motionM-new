@@ -22,7 +22,7 @@ class Chat {
     this.printChatList(list);
   }
 
-  async printChatList(list) {
+  async printChatList(list, position) {
     const userInfo = this.userInfo;
     let html = '';
 
@@ -34,7 +34,8 @@ class Chat {
       else html += this.mappingChatRight(item, chatUserInfo);
     });
 
-    $('#chat-list').prepend(html);
+    if (position == 'top') $('#chat-list').prepend(html);
+    else $('#chat-list').append(html);
   }
 
   mappingChatLeft(item, chatUserInfo) {

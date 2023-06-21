@@ -19,7 +19,7 @@ export class ChatService {
       .where('chat.roomIdx = :roomIdx', { roomIdx })
       .take(limit) // limit
       .skip(offset) // offset
-      .orderBy({ 'chat.sendDt': 'DESC' })
+      .orderBy({ 'chat.sendDt': 'ASC' })
       .getMany();
 
     return chatList;

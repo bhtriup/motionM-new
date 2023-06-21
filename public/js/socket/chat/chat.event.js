@@ -7,6 +7,5 @@ function sendMsg(data) {
 }
 
 socket.on('get-msg', function (data) {
-  console.log(data);
-  // chatClass.mappingChatLeft(data);
+  chatClass.printChatList([data]);
 });
