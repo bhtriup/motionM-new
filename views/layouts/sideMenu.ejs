@@ -12,9 +12,32 @@
             <span class="num__">23</span>
         </li>
         <li>
-            <a class="menu1" href="#" title="">
+            <a class="new-chat menu1" href="#" title="">
                 <img src="/media/i_new_chat.png" alt="">
             </a>
+            <div class="new-chat-submenu">
+                <div class="new-chat-wrap">
+                    <div>
+                        <a href="#" title="">
+                            <figure>
+                                <img src="/media/i-new-chat.svg"/>
+                            </figure>
+                            <p>채팅하기</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#" title="">
+                            <figure>
+                                <img src="/media/i-call.svg"/>
+                            </figure>
+                            <p>통화하기</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="btn-close">
+                    <img src="/media/i-close-g.png" title="">
+                </button>
+            </div>
         </li>
         <li>
             <div class="btn-more">
@@ -51,7 +74,7 @@
     $(document).ready(function() {
         const url = location.href;
         const menu0 = url.indexOf("/friend");
-        const menu1 = url.indexOf("/chat/room-list");
+        const menu1 = url.indexOf("/front/room/list");
 
         if(menu0 != -1) {
             $("#friend").addClass("active");
@@ -63,6 +86,27 @@
 </script>
 
 <script>
+    // 새로운채팅, 전화하기 메뉴
+    $(document).ready(function(){
+        var target = $(".new-chat-submenu");
+        $(document).on("click", ".new-chat", function (e){
+            target.show();
+            target.addClass('d-block');
+            $('.new-chat').addClass('active');
+        });
+        $(document).mouseup(function (e){
+            if(target.has(e.target).length==0) {
+                target.hide();
+                target.removeClass('d-block');
+                $('.new-chat').removeClass('active');
+            }
+        });
+        $(".new-chat-submenu > .btn-close").click(function(){
+            target.hide();
+            target.removeClass('d-block');
+            $('.new-chat').removeClass('active');
+        });
+    });
     //환경설정 메뉴
     $(document).ready(function(){
         var target = $(".chat-submenu");
