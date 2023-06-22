@@ -34,13 +34,14 @@ export class ChatController {
     return chatList;
   }
 
-  @Post('/read/:roomIdx')
+  @Post('/read-all/:roomIdx')
   async readMsg(@User() user, @Param('roomIdx') roomIdx: number) {
     const { ykiho, id } = user;
+    const chatIdArr = [];
 
     const readIds = await this.chatReadService.getMsgReadUser(roomIdx, id);
 
-    if (readIds.length <= 0) return;
+    if (readIds.length <= 0) return chatIdArr;
 
     for (const readId of readIds) {
       const read = new ChatReadEntity();
@@ -53,7 +54,8 @@ export class ChatController {
         read.readIds = id;
         await this.chatReadService.setRead(read);
 
-        await this.chatService.updateReadCount(read.idx, 1);
+        await this.chatService.updateReadCount(read.msgIdx, 1);
+        chatIdArr.push({ msgIdx: read.msgIdx, count: 1 });
         continue;
       }
 
@@ -65,8 +67,12 @@ export class ChatController {
 
         await this.chatReadService.setRead(read);
 
-        await this.chatService.updateReadCount(read.idx, readIdArr.length);
+        await this.chatService.updateReadCount(read.msgIdx, readIdArr.length);
+
+        chatIdArr.push({ msgIdx: read.msgIdx, count: readIdArr.length });
       }
     }
+
+    return chatIdArr;
   }
 }

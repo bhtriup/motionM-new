@@ -19,22 +19,24 @@ class Chat {
 
     let list = await response.json();
 
-    this.printChatList(list);
+    this.printChatList(list, 'top');
   }
 
-  async printChatList(list) {
+  async printChatList(list, position) {
     const userInfo = this.userInfo;
-    let html = '';
 
     list.forEach((item) => {
+      let html = '';
+
       const chatUserInfo = _.find(this.userList, { userId: item.userId });
 
       if (item.userId != userInfo.userId)
         html += this.mappingChatLeft(item, chatUserInfo);
       else html += this.mappingChatRight(item, chatUserInfo);
-    });
 
-    $('#chat-list').prepend(html);
+      if (position == 'top') $('#chat-list').prepend(html);
+      else $('#chat-list').append(html);
+    });
   }
 
   mappingChatLeft(item, chatUserInfo) {
@@ -46,7 +48,7 @@ class Chat {
     }
 
     let html = `
-      <div class="chatting-left">
+      <div class="chat-item chatting-left" data-msg-idx="${item.idx}">
         <div class="_img-wrap">
             <a href="#">
                 <img src="${imgUrl}" alt="">
@@ -60,7 +62,7 @@ class Chat {
                 <li class="chat-txt-box">
                     <p>${item.msg}</p>
                     <div class="reading-time-wrap">
-                        <span>읽음 20 <b><img src="/media/i-read.png" alt=""></b></span>
+                        <span>읽음 <span class="read-count">${item.readCount}</span><b><img src="/media/i-read.png" alt=""></b></span>
                         <span>${sendDt}</span>
                     </div>
                 </li>
@@ -76,11 +78,11 @@ class Chat {
     const sendDt = getDateTime(item.sendDt, 'time-no-sec');
 
     let html = `
-      <div class="chatting-right">
+      <div class="chat-item chatting-right" data-msg-idx="${item.idx}">
           <ul class="chat-txt-width">
               <li class="chat-txt-box">
                   <div class="reading-time-wrap">
-                      <span><b><img src="/media/i-read.png" alt=""></b> 읽음 20</span>
+                      <span><b><img src="/media/i-read.png" alt=""></b> 읽음 <span class="read-count">${item.readCount}</span></span>
                       <span>${sendDt}</span>
                   </div>
                   <p>${item.msg}</p>
@@ -90,6 +92,10 @@ class Chat {
     `;
 
     return html;
+  }
+
+  mappingChatRead(item) {
+    $(`.chat-item[data-msg-idx=${item.msgIdx}] .read-count`).text(item.count);
   }
 
   async sendMsg(msg) {

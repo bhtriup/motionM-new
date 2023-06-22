@@ -25,6 +25,15 @@ export class ChatService {
     return chatList;
   }
 
+  async getChat(msgIdx: number): Promise<ChatEntity> {
+    const chat = await this.chatRepository
+      .createQueryBuilder('chat')
+      .where('chat.idx = :msgIdx', { msgIdx })
+      .getOne();
+
+    return chat;
+  }
+
   async getUnreadChatCount(userId: string, roomIdx: number, date: string) {
     const qb = await this.chatRepository
       .createQueryBuilder('chat')
@@ -50,6 +59,6 @@ export class ChatService {
   }
 
   async insertMsg(chat: ChatEntity) {
-    await this.chatRepository.save(chat);
+    return await this.chatRepository.insert(chat);
   }
 }

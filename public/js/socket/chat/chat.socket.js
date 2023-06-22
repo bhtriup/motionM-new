@@ -15,6 +15,7 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
   console.log('disconnected...');
+  roomClass.updateLastEnterDt();
 });
 
 socket.on('error', (err) => {

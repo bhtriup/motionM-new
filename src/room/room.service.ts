@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { RoomEntity } from './entity/room.entity';
 import { Repository } from 'typeorm';
+import { getNow } from '../common/constant/function';
 
 @Injectable()
 export class RoomService {
@@ -40,5 +41,18 @@ export class RoomService {
       .getOne();
 
     return roomInfo;
+  }
+
+  async updateLastMsg(idx: number, msg: string) {
+    const room: RoomEntity = await this.roomRepository.findOne({
+      where: {
+        idx,
+      },
+    });
+
+    room.lastMsg = msg;
+    room.lastMsgTime = getNow();
+
+    await this.roomRepository.save(room);
   }
 }
