@@ -109,10 +109,14 @@ class Room {
   async processMsgRead() {
     const roomIdx = this.roomIdx;
 
-    await fetch(`/chat/read/${roomIdx}`, {
+    let response = await fetch(`/chat/read-all/${roomIdx}`, {
       method: 'POST',
       headers: getHeader(userInfo.ykiho, MSG_DB_TYPE, userInfo.token),
     });
+
+    let list = await response.json();
+
+    return list;
   }
 
   async updateLastEnterDt() {

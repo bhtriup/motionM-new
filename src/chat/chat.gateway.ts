@@ -16,6 +16,10 @@ import { Repository } from 'typeorm';
 import { Logger } from '@nestjs/common';
 import DataSourceManager from '../tenancy/database.util';
 import { DB_TYPE } from '../common/constant/constant';
+import { ChatReadService } from './chat.read.service';
+import { ChatReadEntity } from './entity/chat.read.entity';
+import { RoomService } from '../room/room.service';
+import { RoomEntity } from '../room/entity/room.entity';
 
 @WebSocketGateway(3004, {
   namespace: 'chat',
@@ -30,7 +34,9 @@ export class ChatGateway
 
   private readonly logger = new Logger(ChatGateway.name);
 
+  private roomService: RoomService;
   private chatService: ChatService;
+  private chatReadService: ChatReadService;
 
   afterInit() {
     this.logger.debug(`Socket Server Init Complete`);
@@ -45,8 +51,15 @@ export class ChatGateway
     );
     const chatRepository: Repository<ChatEntity> =
       dataSource.getRepository(ChatEntity);
-
     this.chatService = new ChatService(chatRepository);
+
+    const chatReadService: Repository<ChatReadEntity> =
+      dataSource.getRepository(ChatReadEntity);
+    this.chatReadService = new ChatReadService(chatReadService);
+
+    const roomService: Repository<RoomEntity> =
+      dataSource.getRepository(RoomEntity);
+    this.roomService = new RoomService(roomService);
 
     const roomName = this.getRoomName(client);
     await client.join(roomName);
@@ -72,10 +85,23 @@ export class ChatGateway
     chatEntity.roomIdx = roomIdx;
     chatEntity.userId = userId;
     chatEntity.msg = msg;
-    await this.chatService.insertMsg(chatEntity);
+    const insertResult = await this.chatService.insertMsg(chatEntity);
 
-    // // 나를 제외한 방에 있는 모든 유저에게
-    client.broadcast.to(roomName).emit('get-msg', { userId, msg });
+    const chatReadEntity = new ChatReadEntity();
+    chatReadEntity.roomIdx = roomIdx;
+    chatReadEntity.msgIdx = insertResult.raw.insertId;
+    await this.chatReadService.insertMsgRead(chatReadEntity);
+
+    // 마지막 채팅내역 업데이트
+    await this.roomService.updateLastMsg(roomIdx, msg);
+
+    const newChat = await this.chatService.getChat(insertResult.raw.insertId);
+
+    // 나를 제외한 방에 있는 모든 유저에게
+    // client.broadcast.to(roomName).emit('get-msg', { userId, msg });
+
+    // 모든 유저에게
+    this.server.to(roomName).emit('get-msg', newChat);
   }
 
   private getRoomName(client: Socket) {

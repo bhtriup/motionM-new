@@ -26,6 +26,8 @@ $(() => {
         $(this).val('');
       }
   });
+
+  setInterval(processMsgRead, 1000);
 });
 
 /**
@@ -38,7 +40,6 @@ async function getChatInfo() {
     location.href = FRONT_URL + '/login';
   }
 
-  // 메시지 읽음 처리
   await roomClass.processMsgRead();
 
   // 방에 접속한 마지막 시간
@@ -54,4 +55,21 @@ async function getChatInfo() {
 
   // 채팅 목록
   await chatClass.getChatList();
+}
+
+async function processMsgRead() {
+  // 포커스를 가지고 있다면 읽음 처리
+  if (document.hasFocus()) {
+    const list = await roomClass.processMsgRead();
+
+    list.forEach((item) => {
+      chatClass.mappingChatRead(item);
+    });
+  }
+}
+
+async function processGetMsg(data) {
+  await chatClass.printChatList([data]);
+
+  await processMsgRead();
 }

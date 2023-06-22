@@ -23,6 +23,10 @@ export class ChatReadService {
     return readIds;
   }
 
+  async insertMsgRead(chatRead: ChatReadEntity) {
+    return await this.chatReadRepository.insert(chatRead);
+  }
+
   async setRead(read: ChatReadEntity) {
     await this.chatReadRepository.save(read);
   }
